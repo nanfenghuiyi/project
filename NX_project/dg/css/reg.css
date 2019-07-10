@@ -1,0 +1,12 @@
+/* 头部样式 */
+.font_reg{
+  font-size: 20px;
+}
+
+.input_h_center{
+  line-height: 32px;
+}
+/*尾部高度*/
+.footer_h{
+  height: 349px;
+}

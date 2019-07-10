@@ -1,0 +1,117 @@
+/*格式化*/
+h1,h2,h3,h4,h5,h6,p,ul,ol,body{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+/*头部尾部的高度*/
+@media screen and (min-width:992px) {
+    .my_li_w{
+        left: 0px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    
+}
+
+@media screen and (max-width:767px) {
+    .aside_display{
+        display: none;
+    }
+    .nav_list>ul>li{
+        padding: 0 !important;
+    }
+    .my_li_w{
+        left: -18px !important;
+        top: 20px !important;
+    }
+    .nav_none>div:first-child,.my_pos{
+        display: none
+    }
+    /* .z_index{
+        top:10px !important;
+    } */
+}
+/*定义网页字体，背景*/
+/* body{
+    background: #ebebeb;
+} */
+.my_small{
+    font-size: 12px;
+}
+.my_small_big{
+    font-size: 14px;
+}
+.tetx_color{
+    color: #949494;
+}
+/*加入购物车样式*/
+.my_a {
+    color: #ff3500;
+}
+.my_a::after{
+    content: ">";
+    display: inline-block;
+}
+/*悬停样式*/
+.bg-white:hover .my_a::after{
+    content: "+";
+}
+.product_hover .bg-white:hover{
+    background-color: #FCEDEF !important;
+}
+.product_hover .bg-white img{
+    transition: 1s;
+}
+.product_hover .bg-white:hover img{
+    transform: scale(1.05);
+}
+
+/* 输入框样式 */
+.input_w {
+    width: 250px;
+    height: 32px;
+}
+.border_bottom {
+    border-bottom: 1px solid #ccc !important;
+}
+.bg_input::before {
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    background: url("../img/log/icons_2.png") center no-repeat;
+    background-position: -46px -3px;
+}
+.bg_input_test::before {
+    background-position: -87px -3px;
+}
+
+.bg_input_upwd::before {
+    background-position: -6px -3px;
+}
+/*字体，背景颜色*/
+.my_color {
+    color: #F5421F;
+}
+
+.bg_log_button {
+    background: #F5421F;
+    height: 30px;
+    line-height: 15px !important;
+}
+
+.bg_log_button_h {
+    height: 50px;
+    width: 250px;
+    line-height: 25px !important;
+}
+
+.input_w_log {
+    width: 160px;
+    height: 32px;
+}

@@ -1,0 +1,32 @@
+/*侧边固定项*/
+.position_fixed_top,
+.position_fixed_bottom {
+  width: 76px;
+  height: 76px;
+  border: 1px solid #e5e5e5;
+}
+
+.aside_display .position-fixed {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.position_fixed_left {
+  transform: translate(-38%, -37%) !important
+}
+
+.position_fixed_p {
+  width: 40px;
+  height: 40px;
+  background: url("../img/aside/icons_1.png") center no-repeat;
+  background-position: -205px -5px;
+}
+
+.position_fixed_bottom .position_fixed_p {
+  background-position: -155px -5px;
+}
+
+.position_fixed_top a:hover .d-none {
+  display: block !important;
+}

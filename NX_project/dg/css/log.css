@@ -1,0 +1,41 @@
+/*背景图*/
+.bg_log{
+    height: 520px;
+    background: url("../img/log/AC198F1E37025872D33159B4CFC2AE88.jpg") center no-repeat;
+}
+/*登录框*/
+.my_log{
+    width: 350px;
+    height: 450px;
+}
+/*其他方式*/
+/* .bg_other{
+    width: 40px;
+    height: 40px;
+    background: url("../img/log/icon_social.png") center no-repeat;
+    background-position: 0 0;
+} */
+.my_style h3::before{
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 75%;
+    background: #e5e5e5;
+    top:50%;
+    z-index: 1;
+}
+.my_style h3::after{
+    content: "其他登录方式";
+    position: absolute;
+    color: #949494;
+    font-size: 12px;
+    top: -6px;
+    text-align: center !important;
+    width: 75%;
+    height: 20px;
+    z-index: 2;
+}
+/*尾部高度*/
+.footer_h {
+    height: 327px;
+}

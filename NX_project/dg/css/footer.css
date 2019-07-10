@@ -1,0 +1,7 @@
+/*中间导航栏*/
+.breadcrumb-item+.breadcrumb-item::before {
+    content: "|";
+}
+.my_color_footer {
+    background-color: #ebebeb;
+}

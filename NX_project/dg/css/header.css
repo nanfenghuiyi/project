@@ -1,0 +1,139 @@
+/*小图的背景*/
+.bg_small::before{
+    width: 40px;
+    height: 26px;
+    content:"";
+    background:url("../img/header/icons.png") center no-repeat;
+    display: block;
+    background-position: -320px -252px;
+}
+/*顶部背景*/
+.bg_top{
+    background: #f9f9f9;
+}
+.mr-5{
+    margin-right: 13% !important;
+}
+/*顶部图片隐藏显示*/
+.bg_top a:hover .d-none{
+    display: block !important;
+    position: absolute;
+    top: 20px;
+    right: 10%;
+    z-index: 100;
+}
+/*标题左边*/
+/*查询地址背景*/
+.my_pos .bg_small::before {
+    background-position: -280px -207px;
+}
+.container .bg_small::before {
+    background-position: -280px -210px;
+}
+/*地址选择框*/
+.addres{
+    top:0%;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    background: rgba(0, 0, 0, 0.2);
+}
+.addres>div:first-child{
+    top: 20%;
+    left: 50%;
+    transform: translateX(-275px);
+    width: 550px;
+}
+.addres .d-flex .bg_small::before{
+    background-position: 0 -8px;
+}
+.my_clear{
+    clear: both;
+}
+.my_clear a,.my_clear label{
+    display: inline-block;
+    width: 70px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+}
+.my_clear>div{
+    margin-left: 70px;
+}
+/*x 背景*/
+.addres a.float-right {
+    width: 50px;
+    height: 50px;
+    background: url("../img/header/icons.png") center no-repeat;
+    background-position: -115px -116px;
+}
+/*标题右边*/
+.input_border_bottom{
+    height: 30px;
+    border-bottom: 1px solid #000 !important;
+}
+.bg_button{
+    width: 40px;
+    height: 26px;
+    cursor: pointer;
+    background:url("../img/header/icons.png") center no-repeat;
+    background-position: -320px -207px;
+}
+.bg_a{
+    background-position:-240px -247px;
+}
+/*导航栏*/
+.addres_color,.bg_li_small{
+    color: #febabe;
+}
+.bg_li_small::before{
+    width:30px ;
+    content: "";
+    background: url("../img/header/icon_heart.png")center no-repeat;
+}
+.bg_li{
+    border-bottom: 2px solid #febabe !important;
+}
+/* .position_ab{
+    position: absolute;
+    left: 0;
+} */
+.my_li_w{
+    top:40px;
+    right: 5px;
+    width: 100px;
+}
+.list-unstyled li.list-group-item:hover .d-none{
+    display: flex !important;
+    z-index: 10;
+}
+/*隐藏导航栏*/
+.z_index{
+    z-index: 100;
+    top: 0% !important;
+}
+    /*其他模块*/
+.my_user{
+    position: absolute;
+    left: -50%;
+    top: 40px;
+    width: 80px;
+}
+.position-relative.bg_small::before{
+    background-position: -360px -207px;
+    cursor: pointer;
+}
+.position-relative>.bg_small::before{
+    background-position: -360px -248px;
+}
+.position-relative.bg_small:hover .d-none{
+    display: block !important;
+}
+.my_user a{
+    height: 36px;
+    line-height: 36px;
+    left: 0px;
+}
+.my_user li:first-child{
+    border-bottom:1px solid #e5e5e5;
+}

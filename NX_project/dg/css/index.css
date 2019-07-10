@@ -1,0 +1,93 @@
+/* 头部尾部的高度
+@media screen and (min-width:992px){
+    .header_h{height: 183px;}
+    .footer_h{height: 210px;}
+}
+@media screen and (min-width:768px) and (max-width:991px){
+    .header_h {
+        height: 182px;
+    }
+
+    .footer_h {
+        height: 212px;
+    }
+}
+@media screen and (max-width:767px) {
+    .header_h {
+        height: 295px;
+    }
+
+    .footer_h {
+        height: 250px;
+    } */
+@media screen and (max-width:767px) {
+    .text_center_small{
+        text-align:center;
+    }
+    .position_fixed_top,.position_fixed_bottom{
+        display: none;
+    } 
+}
+/*轮播图左右箭头*/
+.carousel-control-prev,
+.carousel-control-next {
+    width: 3%;
+    height: 20%;
+    /* background: #CAC3BF; */
+    /* border-radius: 0.25rem; */
+    top: 40%;
+}
+.carousel-control-prev{
+    left: 10%;
+}
+.carousel-control-next{
+    right: 10%;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 100%;
+    height: 100%;
+    background: url("../img/index/banner_arrow.png") center no-repeat;
+    background-position: -6px -10px;
+    border-radius: 0.25rem;
+}
+.carousel-control-next-icon{
+    background-position: -56px -10px;
+}
+.carousel:hover .d-none {
+    display: block !important;
+}
+/*内容部分*/
+.bg_row{
+    background: #f9f9f9;
+}
+.my_h{
+    height: 80px;
+}
+.bg_feature{
+    background: #cca976;
+}
+/*用户评论按钮*/
+.bg_a_left,.bg_a_right{
+    width: 50px;
+    height: 100px;
+    background: url("../img/user_p/swiper_arrow.png") center no-repeat;
+    background-position: 20px 0;
+}
+.bg_a_right{
+    background-position: -30px 0;
+}
+.margin_h{
+    margin-top: 100%;
+}
+.border_radius{
+    border-radius: 50%;
+}
+.bg_comment{
+    height: 320px;
+    background: url("../img/user_p/comment_bg.png") center no-repeat;
+}
+.h_comment{
+    height: 108px;
+}
+

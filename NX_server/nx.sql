@@ -69,9 +69,6 @@ create table nx_laptop(
 	is_onsale boolean	#是否促销中	
 );
 insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-4人食",5,"15×15×3",545,1);
-insert into nx_laptop values(null,1,2,"雪域牛乳芝士蛋糕·特浓",458,"5-8人食",10,"20×20×3",1090,1);
-insert into nx_laptop values(null,1,3,"雪域牛乳芝士蛋糕·特浓",680,"10-12人食",15,"25×25×3",1635,1);
-insert into nx_laptop values(null,1,4,"雪域牛乳芝士蛋糕·特浓",1120,"15-20人食",20,"33×33×3",2725,1);
 
 #商品优惠表
 

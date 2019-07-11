@@ -1,6 +1,20 @@
 $(function () {
+  //读取数据库
+  $.ajax({
+    type:"get",
+    url:"http://localhost:3000/product_details",
+    data:"data",
+    dataType:"json",
+    success:function (result) {
+      console.log(result);
+    }
+  })
+
+  //隐藏小图样式
   $(".nav_list>ul>li:first-child>a").removeClass("bg_li_small");
   $(".nav_list>ul>li:first-child").removeClass("bg_li");
+  //去掉头部隐藏导航栏
+  $(".nav_none").remove();
   /*隐藏购物栏*/
   $(window).scroll(function () {
     var pro_img_height = $('.pro_img').offset().top;

@@ -18,13 +18,12 @@ $(function () {
         $(`#p${i+1} p`).html("¥" + data[i].price);
         //定义空的html，用来接img的模块
         var html="";
-        html += `<a href="product_details.html?pid=${data[i].pid}">
+        html += `<a href="product_details.html?lid=${data[i].pid}">
           <img class = "img-fluid" src = "http://127.0.0.1:3000/img/index/${data[i].pic}" alt = "">
         </a>`;
         $(`#p${i+1} .my_list`).html(html);
       };
       //轮播图数据
-      //将图片数据解构出来
       var carousel=`<div class="carousel-item w-100 active">
           <img class="img-fluid" src="http://127.0.0.1:3000/img/index/${img[0].img}" alt="">
         </div>`;

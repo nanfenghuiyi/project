@@ -11,11 +11,19 @@ a{
 @media screen and (min-width:992px) {
     .my_li_w{
         left: 0px;
+    };
+    .p_three::before {
+        left: 310px !important;
     }
 }
 
 @media screen and (min-width:768px) and (max-width:991px) {
-    
+    .p_two::before {
+        left: 205px;
+    };
+    .p_three::before {
+        left: 424px;
+    }
 }
 
 @media screen and (max-width:767px) {

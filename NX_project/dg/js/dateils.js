@@ -1,14 +1,55 @@
 $(function () {
   //读取数据库
-  $.ajax({
-    type:"get",
-    url:"http://localhost:3000/product_details",
-    data:"data",
-    dataType:"json",
-    success:function (result) {
-      console.log(result);
-    }
-  })
+  if(location.search!==""){
+    //获得地址栏中的?lid=1
+    var lid=location.search.split("=")[1];
+    $.ajax({
+      type:"get",
+      url:"http://localhost:3000/details",
+      data:{lid},
+      dataType:"json",
+      success:function (result) {
+        console.log(result);
+        //将数据解构出来
+        var {product,pics,onsales,carousels}=result;
+        //将商品数据解构出来
+        var {title,price,kg,num,size,spce}=product;
+        $("#title").html(title);
+        $("#price").html("¥"+price);
+        $("#kg").html("约"+kg+"g");
+        $("#num").html(`含${num}套餐具`);
+        $("#size").html(`约${size}cm`);
+        //商品图片数据
+        var pics=pics[0];
+        //定义空img,用来接img片段
+        var img="";
+        img += `<img class="img-fluid" src="http://127.0.0.1:3000/img/product/${pics.img}" alt="">`;
+        $("#img").html(img);
+        //定义空video,用来接video片段
+        var video="";
+        video += `<video src="http://127.0.0.1:3000/img/product/${pics.video}" controls type="vide0/mp4"  preload="auto" ></video>`;
+        $("#video").html(video);
+        //定义空pic,用来接img片段
+        var pic="";
+        pic += `<img class="img-fluid" src="http://127.0.0.1:3000/img/product/${pics.pic}" alt="">`;
+        $("#pic").html(pic);
+        //优惠促销数据
+        var onsale=onsales[0];
+        $("#onsale1").html(onsale.title)
+        $("#onsale2").html(onsale.subtitle)
+        //详情轮播图
+        var carousel = `<div class="carousel-item w-100 active">
+          <img class="img-fluid" src="http://127.0.0.1:3000/img/product/${carousels[0].img}" alt="">
+        </div>`;
+        for (var i = 1; i < carousels.length; i++) {
+          carousel += `<div class="carousel-item w-100">
+          <img class="img-fluid" src="http://127.0.0.1:3000/img/product/${carousels[i].img}" alt="">
+        </div>`;
+          $(".carousel-inner").html(carousel)
+        }
+      }
+    })
+  };
 
   //隐藏小图样式
   $(".nav_list>ul>li:first-child>a").removeClass("bg_li_small");

@@ -31,11 +31,11 @@ const session = require("express-session");
   server.listen(3000);
 //首页数据
 server.get("/index",(req,res)=>{
-  var sql = `select * from nx_index_product where seq_recommended!=0 ORDER BY seq_recommended`;
+  var sql = "select * from nx_index_product where seq_recommended!=0 ORDER BY seq_recommended";
   pool.query(sql,[],(err,result)=>{
     if(err) throw err;
     var obj={code:1,msg:"查询成功",data:result};
-    var sql2 = `select * from nx_index_carousel`;
+    var sql2 = "select * from nx_index_carousel";
     pool.query(sql2,[],(err,result)=>{
       if (err) throw err;
       obj.img=result;
@@ -46,16 +46,41 @@ server.get("/index",(req,res)=>{
 //商品详情数据
 server.get("/details",(req,res)=>{
   var lid=req.query.lid;
+  console.log(lid)
   var output={
     product:{},
-    pics:[],
     carousels:[],
+    pics:[],
     onsales:[]
   };
-  var sql = `select * from nx_laptop where lid=?`;
-  pool.query(sql,[lid],(res,result)=>{
-    if(err) throw err;
-    console.log(result)
-    output.product=result[0];
-  })
-})
+  if(lid!==undefined){
+    var sql1 = "select * from nx_laptop where lid=?";
+    pool.query(sql1,[lid],(err,result)=>{
+      if(err) throw err;
+      output.product=result[0];
+      console.log(output)
+      var family_id = output.product["family_id"];
+      var sql2 = "select img,title,href from nx_laptop_carousel where family_id=?";
+      pool.query(sql2, [family_id], (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        output.carousels=result;
+        var sql3 = "select video,img,pic from nx_laptop_pic where family_id=?";
+        pool.query(sql3, [family_id], (err, result) => {
+          if(err) throw err;
+          console.log(result);
+          output.pics=result;
+          var sql4 = "select title,subtitle from nx_laptop_onsale where family_id=?";
+          pool.query(sql4, [family_id], (err, result) => {
+            if(err) throw err;
+            console.log(result);
+            output.onsales=result;
+            res.send(output);
+          });
+        });
+      });
+    });
+  }else{
+    res.send(output)
+  }
+});

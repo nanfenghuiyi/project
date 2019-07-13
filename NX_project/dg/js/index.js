@@ -1,5 +1,5 @@
 $(function () {
-  //读取数据库
+  //连接数据库
   $.ajax({
     type: "get",
     url: "http://localhost:3000/index",

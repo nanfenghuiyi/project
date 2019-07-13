@@ -5,15 +5,15 @@ use nx;
 
 #用户信息	nx_user
 
--- create table nx_user(
--- 	uid int primary key not null auto_increment,#用户的ID，为用户的唯一标识，由系统自动生成
--- 	uname varchar(32),
--- 	upwd varchar(32) not null,
--- 	phone varchar(16) not null unique,#手机号码
--- 	gender int,#性别 0-女 1-男
--- 	user_name varchar(32),#用户名
--- 	avatar varchar(128),#头像图片路径
--- );
+create table nx_user(
+	uid int primary key not null auto_increment,#用户的ID，为用户的唯一标识，由系统自动生成
+	uname varchar(32),
+	upwd varchar(32) not null,
+	phone varchar(16) not null unique,#手机号码
+	gender int,#性别 0-女 1-男
+	user_name varchar(32),#用户名
+	avatar varchar(128)#头像图片路径
+);
 
 #用户地址表	nx_recever_address
 

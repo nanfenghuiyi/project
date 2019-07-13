@@ -43,6 +43,7 @@ server.get("/index",(req,res)=>{
     }) 
   });
 })
+
 //商品详情数据
 server.get("/details",(req,res)=>{
   var lid=req.query.lid;
@@ -84,3 +85,54 @@ server.get("/details",(req,res)=>{
     res.send(output)
   }
 });
+
+//注册数据
+server.get("/reg",(req,res)=>{
+  var obj=req.query;
+  console.log(obj)
+  if(!obj.phone){
+    res.send("电话不能为空");
+    return;
+  };
+  if(!obj.upwd){
+    res.send("密码不能为空")
+    return;
+  };
+  var sql="insert into nx_user set ?";
+  pool.query(sql,[obj],(err,result)=>{
+    if(err) throw err;
+    if(result.affectedRows<0){
+      res.send({code:0,msg:"注册失败"})
+    }else{
+      res.send({code:1,msg:"注册成功"})
+    }
+  })
+})
+
+//注册时查询数据库
+// server.get
+
+//用户登录
+server.get("/login",(req,res)=>{
+  // var $uname=req.query.uname;
+  var $phone=req.query.phone;
+  var $upwd=req.query.upwd;
+  //验证
+  if (!$phone) {
+    res.send("手机号不能为空");
+    return;
+  };
+  if (!$upwd) {
+    res.send("密码不能为空");
+    return;
+  };
+  var sql="select * from nx_user where phone=? and upwd=?";
+  pool.query(sql,[$phone,$upwd],(err,result)=>{
+    if(err) throw err;
+    if (result.length > 0){
+      res.send={code:1,msg:"登录成功"};
+    }else {
+      res.send={code:0,msg:"登录失败"};
+    }
+  })
+})

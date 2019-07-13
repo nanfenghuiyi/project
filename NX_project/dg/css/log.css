@@ -39,3 +39,8 @@
 .footer_h {
     height: 327px;
 }
+
+/*选中颜色*/
+.active{
+    color:"#F5421F";
+}

@@ -6,10 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>用户注册</title>
-	<link rel="stylesheet" href="../css/bootstrap.css">
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/popper.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/verify.js"></script>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/verify.css">
 	<link rel="stylesheet" href="css/comm.css">
 	<link rel="stylesheet" href="css/reg.css">
 </head>
@@ -36,41 +38,45 @@
 	<!-- 中间内容 -->
 	<section>
 		<div class="container">
-			<div class="row my_small_big text-center my-5">
-				<div class="col-12">
-					<p class="bg_input">
-						<input class="input_w border-0 border_bottom pl-4" type="text" placeholder="手机号码">
-					</p>
-				</div>
-				<div class="col-12 mt-4">
-					<p class="bg_input bg_input_upwd">
-						<input class="input_w border-0 border_bottom pl-4" type="text" placeholder="6-20位密码">
-					</p>
-				</div>
-				<div class="col-12 mt-4">
-					<p class="bg_input bg_input_upwd">
-						<input class="input_w border-0 border_bottom pl-4" type="text" placeholder="确认密码">
-					</p>
-				</div>
-				<div class="col-12 mt-5 d-flex justify-content-center">
-					<div class="border input_w input_h_center">
-						<span>请按住滑块，拖动到最右边</span>
+			<!-- <form action="" method="POST" id="form1"> -->
+				<div class="row my_small_big text-center my-5">
+					<div class="col-12">
+						<p class="bg_input">
+							<input id="tel" class="input_w border-0 border_bottom pl-4" type="text" name="phone" placeholder="手机号码">
+						</p>
+						<span id="telInfo"></span>
+					</div>
+					<div class="col-12 mt-4">
+						<p class="bg_input bg_input_upwd">
+							<input id="pass" class="input_w border-0 border_bottom pl-4" type="password" name="upwd" placeholder="6-20位密码">
+						</p>
+						<span id="passInfo"></span>
+					</div>
+					<div class="col-12 mt-4">
+						<p class="bg_input bg_input_upwd">
+							<input id="password" class="input_w border-0 border_bottom pl-4" type="password" name="upwd1" placeholder="确认密码">
+						</p>
+						<span id="passwordInfo"></span>
+					</div>
+					<!-- 滑动验证 -->
+					<div class="col-12 mt-4 d-flex justify-content-center">
+						<div id="mpanel1"></div>
+					</div>
+					<div class="col-12 mt-4 d-flex justify-content-center">
+						<p class="bg_input bg_input_test">
+							<input type="text" class="pl-4 pb-1 border-0 tetx_color border_bottom input_w_log" placeholder="短信验证码">
+						</p>
+						<button class="btn my_small text-white bg_log_button">发送验证码</button>
+					</div>
+					<div class="col-12 mt-4">
+						<input id="btn" type="submit" disabled="disabled" class="btn text-white bg_log_button bg_log_button_h"></input>
+					</div>
+					<div class="col-12 mt-4 my_small">
+						<input id="btncheck" type="checkbox">我已阅读并同意
+						<a class="my_color" href="#">《诺心lecake用户服务协议》</a>
 					</div>
 				</div>
-				<div class="col-12 mt-4 d-flex justify-content-center">
-					<p class="bg_input bg_input_test">
-						<input type="text" class="pl-4 pb-1 border-0 tetx_color border_bottom input_w_log" placeholder="短信验证码">
-					</p>
-					<button class="btn my_small text-white bg_log_button">发送验证码</button>
-				</div>
-				<div class="col-12 mt-4">
-					<button class="btn text-white bg_log_button bg_log_button_h">立即登录</button>
-				</div>
-				<div class="col-12 mt-4 my_small">
-					<input type="checkbox" checked>我已阅读并同意
-					<a class="my_color" href="#">《诺心lecake用户服务协议》</a>
-				</div>
-			</div>
+			<!-- </form>	 -->
 		</div>
 	</section>
 	<!-- 侧边固定项 -->
@@ -82,8 +88,10 @@
 </body>
 <script src="js/aside.js"></script>
 <script src="js/footer.js"></script>
+<script src="js/reg.js"></script>
+<script src="js/user.js"></script>
 <script>
-
+	
 </script>
 
 </html>

@@ -6,7 +6,10 @@
 .input_h_center{
   line-height: 32px;
 }
-/*尾部高度*/
-.footer_h{
-  height: 349px;
+
+
+/*滑动验证*/
+#mpanel {
+  width: 250px;
+  height: 136px;
 }

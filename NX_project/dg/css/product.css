@@ -80,11 +80,11 @@
 /*右边规格*/
 .pro_a a{
   display: block;
-  width: 135px;
   height: 58px;
   line-height: 58px;
 }
 .pro_a li{
+  width: 25%;
   border-bottom: 1px solid #ff4001;
 }
 .pro_a .active{

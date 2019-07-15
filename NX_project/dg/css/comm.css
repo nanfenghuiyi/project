@@ -40,6 +40,14 @@ a{
     .nav_none>div:first-child,.my_pos{
         display: none
     }
+    .p_two::before{
+        left: 0 !important;
+        top: 63px !important;
+    }
+    .p_three::before{
+        left: 0 !important;
+        top: 93px !important;
+    }
     /* .z_index{
         top:10px !important;
     } */

@@ -10,6 +10,7 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/axios.min.js"></script>
     <link rel="stylesheet" href="css/comm.css">
     <link rel="stylesheet" href="css/product.css">
   </head>
@@ -41,7 +42,7 @@
       <div class="pro_shop_none d-none justify-content-around py-3">
         <div class="pro_font">雪域牛乳芝士蛋糕·特浓</div>
         <div>
-          <span>￥458</span> 
+          <span class="price">￥298</span> 
           <span class="my_small pro_font Btn"> (1-2人食)</span>
         </div>
         <a href="javascript:;" class="my_small_big">加入购物车＋</a>
@@ -52,7 +53,7 @@
           <div class="col-lg-6 col-sm-12">
             <div class="d-flex justify-content-between">
               <span id="title">雪域牛乳芝士蛋糕·特浓</span>
-              <div id="price" class="my_color font-weight-bold">¥298</div>
+              <div class="price my_color font-weight-bold">¥298</div>
             </div>
             <div class="mt-4">
               <img class="img-fluid" src="img/product/aha_link.png" alt="">
@@ -88,16 +89,16 @@
               <p>建议食用人数</p>
             </div>
             <div class="my_small text-center pro_a mt-3">
-              <ul class="d-md-flex d-sm-block list-unstyled">
-                <li class="active"><a data-target="tab" href="javascript:;">1-2人食</a></li>
-                <li><a data-target="tab" href="javascript:;">5-8人食</a></li> 
-                <li><a data-target="tab" href="javascript:;">10-12人食</a></li>
-                <li><a data-target="tab" href="javascript:;">15-20人食</a></li>
+              <ul class="d-flex list-unstyled">
+                <li class="active spce1"><a data-target="tab" href="javascript:;">1-2人食</a></li>
+                <li class="spce2"><a data-target="tab" href="javascript:;">5-8人食</a></li> 
+                <li class="spce3"><a data-target="tab" href="javascript:;">10-12人食</a></li>
+                <li class="spce4"><a data-target="tab" href="javascript:;">15-20人食</a></li>
               </ul>
             </div>
-            <div class="my_small d-flex align-items-center justify-content-between py-4 border-bottom position-relative pr-5">
+            <div class="my_small d-md-flex d-sm-block align-items-center justify-content-between py-4 border-bottom position-relative pr-5">
               <p id="num" class="pro_img pro_p p_first">含5套餐具</p>
-              <p id="size" class="pro_img pro_p p_two">约 15 x 15 x 3 cm</p>
+              <p id="size" class="pro_img pro_p p_two">约15x15x3cm</p>
               <p id="kg" class="pro_img pro_p p_three">约545g</p>
               <p class="p_four align-items-center">甜度：</p>
             </div>
@@ -176,8 +177,7 @@
     </section>
     <footer></footer>
   </body>
-  <script src="js/jquery-3.2.1.js"></script>
-  <script src="js/axios.min.js"></script>
+  <script src="../js/jquery-3.2.1.js"></script>
   <!-- <script src="js/ajax.js"></script> -->
   <script src="js/header.js"></script>
   <script src="js/aside.js"></script>

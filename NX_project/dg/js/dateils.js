@@ -15,7 +15,7 @@ $(function () {
         //将商品数据解构出来
         var {title,price,kg,num,size,spce}=product;
         $("#title").html(title);
-        $("#price").html("¥"+price);
+        $(".price").html("¥"+price);
         $("#kg").html("约"+kg+"g");
         $("#num").html(`含${num}套餐具`);
         $("#size").html(`约${size}cm`);
@@ -50,6 +50,32 @@ $(function () {
       }
     })
   };
+
+  //规格选择
+  $("li.spce1").click(function () {
+    $("#num").html("含5套餐具");
+    $("#size").html("约15x15x3cm");
+    $("#kg").html("约545g");
+    $(".price").html("¥298");
+  })
+  $("li.spce2").click(function () {
+    $("#num").html("含10套餐具");
+    $("#size").html("约20x20x3cm");
+    $("#kg").html("约1090g");
+    $(".price").html("¥458");
+  })
+  $("li.spce3").click(function () {
+    $("#num").html("含15套餐具");
+    $("#size").html("约25x25x3cm");
+    $("#kg").html("约1635g");
+    $(".price").html("¥680");
+  })
+  $("li.spce4").click(function () {
+    $("#num").html("含20套餐具");
+    $("#size").html("约33x33x3cm");
+    $("#kg").html("约2725g");
+    $(".price").html("¥1120");
+  })
 
   //隐藏小图样式
   $(".nav_list>ul>li:first-child>a").removeClass("bg_li_small");

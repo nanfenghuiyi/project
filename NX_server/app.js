@@ -118,21 +118,22 @@ server.get("/login",(req,res)=>{
   var $phone=req.query.phone;
   var $upwd=req.query.upwd;
   //验证
-  if (!$phone) {
+  /* if (!$phone) {
     res.send("手机号不能为空");
     return;
   };
   if (!$upwd) {
     res.send("密码不能为空");
     return;
-  };
-  var sql="select * from nx_user where phone=? and upwd=?";
+  }; */
+  var sql = "select * from nx_user where phone=? and upwd=?";
   pool.query(sql,[$phone,$upwd],(err,result)=>{
     if(err) throw err;
+    console.log(result,typeof(result))
     if (result.length > 0){
-      res.send={code:1,msg:"登录成功"};
+      res.send({code:1,msg:"登录成功"});
     }else {
-      res.send={code:0,msg:"登录失败"};
+      res.send({code:0,msg:"登录失败"});
     }
   })
 })

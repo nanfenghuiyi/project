@@ -1,15 +1,11 @@
 <template>
   <div class="nx_container">
     <div class="page-wrap">
-      <!-- 面板 -->
-      <mt-tab-container v-model="active">
-        <mt-tab-container-item id="index">
-          <index></index>
-        </mt-tab-container-item>
-      </mt-tab-container>
+      <!-- 主体内容 -->
+      <user></user>
       <!-- 底部导航栏 -->
       <mt-tabbar v-model="active" fixed>
-        <mt-tab-item id="index" @click.native="changeState(0);btn('')">
+        <mt-tab-item id="page" @click.native="changeState(0);btn('')">
           <tabbaricon :focused="currentIndex[0].isSelected" :selectedImage="require('../assets/nx_page_normal.png')" :normalImage="require('../assets/nx_page_selected.png')"></tabbaricon>
           首页
         </mt-tab-item>
@@ -37,19 +33,19 @@
 
 //引入TabBaricon
 import tabbaricon from "../components/coms/TabBaricon";
-import index from "../components/Index";
+import user from "../components/User";
 
 export default {
   data(){
     return{
       //子组件id
-      active:"index",
+      active:"user",
       currentIndex:[
+        {isSelected:false},
+        {isSelected:false},
+        {isSelected:false},
+        {isSelected:false},
         {isSelected:true},
-        {isSelected:false},
-        {isSelected:false},
-        {isSelected:false},
-        {isSelected:false},
       ]
     }
   },
@@ -70,7 +66,7 @@ export default {
   },
   components:{
     tabbaricon,
-    index
+    user
   }
 }
 </script>

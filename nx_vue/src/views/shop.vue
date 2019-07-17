@@ -3,8 +3,8 @@
     <div class="page-wrap">
       <!-- 面板 -->
       <mt-tab-container v-model="active">
-        <mt-tab-container-item id="index">
-          <index></index>
+        <mt-tab-container-item id="shop">
+          <shop></shop>
         </mt-tab-container-item>
       </mt-tab-container>
       <!-- 底部导航栏 -->
@@ -37,18 +37,18 @@
 
 //引入TabBaricon
 import tabbaricon from "../components/coms/TabBaricon";
-import index from "../components/Index";
+import shop from "../components/Shop";
 
 export default {
   data(){
     return{
       //子组件id
-      active:"index",
+      active:"shop",
       currentIndex:[
+        {isSelected:false},
+        {isSelected:false},
+        {isSelected:false},
         {isSelected:true},
-        {isSelected:false},
-        {isSelected:false},
-        {isSelected:false},
         {isSelected:false},
       ]
     }
@@ -70,7 +70,7 @@ export default {
   },
   components:{
     tabbaricon,
-    index
+    shop
   }
 }
 </script>

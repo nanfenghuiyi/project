@@ -2,6 +2,7 @@
   <div>
     <!-- TabBaricon.vue -->
     <img class="imgstyle" :src="focused?selectedImage:normalImage" alt="">
+    <!-- <img class="imgstyle" :src="tabImg" alt=""> -->
   </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
     focused:false,
     selectedImage:{default:""},
     normalImage:{default:""}
+    // tabImg:{default:""}
   }
 }
 </script>

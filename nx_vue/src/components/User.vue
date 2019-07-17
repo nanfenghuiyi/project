@@ -1,28 +1,178 @@
 <template>
-  <div>
-    <!-- 顶部导航条 -->
-    <titlebar :leftImg="require('../assets/ret.png')" centerTitle="我的" :rightImg="require('../assets/find.png')" :search="mysearch" :ret="myret"></titlebar>
+  <div class="user-container">
+    <!-- 顶部登录 -->
+    <div class="user-top">
+      <div class="use-img">
+        <img src="../assets/user/登录.png" alt="">
+      </div>
+      <div class="user-login">
+        <a class="login" href="javascript:;">登录</a>
+        <a href="javascript:;">注册</a>
+      </div>
+    </div>
+    <!-- 订单信息 -->
+    <div class="order">
+      <a href="javascript:;" class="order-my">
+        <div class="leftdiv">我的订单</div>
+        <div class="rightdiv">
+          全都订单
+          <img src="../assets/user/xiayiye.png" alt="">
+        </div>
+      </a>
+      <div class="order-details">
+        <div class="orderImgl">
+          <img src="../assets/user/daifukuan.png" alt="">
+          待付款
+        </div>
+        <div class="orderImgc">
+          <img src="../assets/user/待发货.png" alt="">
+          待发货
+        </div>
+        <div class="orderImgr">
+          <img src="../assets/user/daishouhuo.png" alt="">
+          待收货
+        </div>
+      </div>
+    </div>
+    <!-- 其他工具 -->
+    <a href="javascript:;" class="order-my order-div">
+      <div class="leftdiv">在线客服</div>
+      <div class="rightdiv">
+        <img src="../assets/user/xiayiye.png" alt="">
+      </div>
+    </a>
+    <a href="javascript:;" class="order-my order-div">
+      <div class="leftdiv">生日助手</div>
+      <div class="rightdiv">
+        <img src="../assets/user/xiayiye.png" alt="">
+      </div>
+    </a>
+    <a href="javascript:;" class="order-my order-div">
+      <div class="leftdiv">收货地址管理</div>
+      <div class="rightdiv">
+        <img src="../assets/user/xiayiye.png" alt="">
+      </div>
+    </a>
+    <a href="javascript:;" class="order-my order-div">
+      <div class="leftdiv">关于发票</div>
+      <div class="rightdiv">
+        <img src="../assets/user/xiayiye.png" alt="">
+      </div>
+    </a>
+    <a href="javascript:;" class="order-my">
+      <div class="leftdiv">意见与反馈</div>
+      <div class="rightdiv">
+        <img src="../assets/user/xiayiye.png" alt="">
+      </div>
+    </a>
+    <a href="javascript:;" class="order-my">
+      <div class="leftdiv">设置</div>
+      <div class="rightdiv">
+        <img src="../assets/user/xiayiye.png" alt="">
+      </div>
+    </a>
+    <a href="javascript:;" class="order-my">
+      <div class="leftdiv">关于</div>
+      <div class="rightdiv">
+        <img src="../assets/user/xiayiye.png" alt="">
+      </div>
+    </a>
   </div>
 </template>
 
 <script>
-//引入titlebar
-import titlebar from "../components/coms/TitleBar";
-
 export default {
   data(){
-    return{}
-  },
-  methods:{
-    mysearch(){console.log("搜索")},
-    myret(){console.log("返回上页面")},
-  },
-  components:{
-    titlebar
+    return {}
   }
 }
 </script>
 
 <style scoped>
-  
+/*最外层元素*/
+.user-container{
+  background: #f5f5f5;
+}
+/*a清除格式*/
+a{
+  color: #2c3e50;
+  text-decoration: none;
+}
+/*顶部用户*/
+.user-top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FB7296;
+  height: 90px;
+}
+.use-img{
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+.use-img img{
+  margin-top: 10px;
+  width: 30px;
+  height: 30px;
+}
+.user-login a{
+  border: 1px solid #d6ae7b;
+  border-radius: 8px;
+  width: 55px;
+  margin: 0 5px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+.login{
+  background: #d6ae7b;
+}
+.user-login{
+  margin-left: 10px;
+  display: flex;
+  justify-content: left;
+}
+/* 订单信息 */
+.order-my{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.leftdiv{
+  margin-left: 20px;
+}
+.rightdiv{
+  display: flex;
+  align-items: center;
+}
+.rightdiv img{
+  width: 35px;
+}
+/*订单状态*/
+.order-details{
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.order-details img{
+  width: 30px;
+  height: 30px;
+}
+.orderImgl img,.orderImgc img,.orderImgr img{
+  display: flex;
+  margin: 30px auto 15px;
+  flex-wrap: wrap-reverse;
+}
+/*其他工具*/
+.order-div{
+  margin: 15px 0;
+}
 </style>

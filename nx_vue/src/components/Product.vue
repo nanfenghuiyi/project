@@ -4,9 +4,17 @@
     <titlebar :leftImg="require('../assets/ret.png')" centerTitle="分类" :rightImg="require('../assets/find.png')" :search="mysearch" :ret="myret"></titlebar>
     <!-- 主体内容 -->
     <div class="cont-item">
-      <a href="" class="itemimg">
+      <a href="javascript:;" class="itemimg">
         <img src="../assets/product/product01.jpg" alt="">
         <h3 class="itemdiv">暖心蛋糕</h3>
+      </a>
+      <a href="javascript:;" class="itemimg">
+        <img src="../assets/product/product01.jpg" alt="">
+        <h3 class="itemdiv itemtop1">暖心蛋糕</h3>
+      </a>
+      <a href="javascript:;" class="itemimg">
+        <img src="../assets/product/product01.jpg" alt="">
+        <h3 class="itemdiv itemtop2">暖心蛋糕</h3>
       </a>
     </div>
   </div>
@@ -32,20 +40,17 @@ export default {
 
 <style scoped>
   .container{
-    background: #fff;
+    background: #ddd;
   }
   .cont-item{
     margin-top: 50px;
   }
-  .itemimg{
-    /* position: relative; */
-  }
   .itemimg img{
-    margin: 15px auto;
+    margin-top: 15px;
     width: 90%;
     height: 250px;
   }
-  .itemimg h3{
+  .itemdiv{
     width: 200px;
     height: 40px;
     line-height: 40px;
@@ -57,5 +62,11 @@ export default {
     top: 18%;
     left: 50%;
     transform: translateX(-100px)
+  }
+  .itemtop1{
+    top:51%;
+  }
+  .itemtop2{
+    top:84%;
   }
 </style>

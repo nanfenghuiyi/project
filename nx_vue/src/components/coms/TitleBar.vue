@@ -31,7 +31,7 @@ export default {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    background-color:  #FB7296;
+    background-color: #FDCCDA;
     height: 48px;
     color: #fff;
     font-size: 18px;

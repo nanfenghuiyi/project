@@ -16,7 +16,12 @@ const session = require("express-session");
   // 2.2：跨域
   var server=express();
   server.use(cors({
-    origin:["http://127.0.0.1:5500","http://localhost:5500"],
+    origin: [
+      "http://127.0.0.1:8080",
+      "http://localhost:8080",
+      "http://127.0.0.1:5500", 
+      "http://localhost:5500"
+    ],
     credentials:true
   }))
   // 2.3：session

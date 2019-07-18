@@ -103,7 +103,7 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FB7296;
+  background-color:#FDCCDA;
   height: 90px;
 }
 .use-img{

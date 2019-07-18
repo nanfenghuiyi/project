@@ -85,6 +85,6 @@ export default {
   /*修改tabar 选中文字颜色*/
   .mint-tabbar>.mint-tab-item.is-selected{
     background-color: transparent;
-    color: #FB7296;
+    color: #FDCCDA;
   }
 </style>

@@ -58,7 +58,6 @@ export default {
       this.$router.push('/'+val)
     },
     changeState(n){
-      // this.$router.push('/'+n)
       for (var i= 0; i < this.currentIndex.length; i++) {
         if(n==i){
           this.currentIndex[i].isSelected=true;

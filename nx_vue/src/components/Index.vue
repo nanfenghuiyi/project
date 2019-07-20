@@ -116,6 +116,9 @@ export default {
         this.listPro2.push(list[i])
       }
     })
+    .catch(err=>{
+      console.log(err)
+    })
   },
   components:{
     titlebar,

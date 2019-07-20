@@ -6,6 +6,9 @@ import axios from "axios"
 axios.defaults.withCredentials=true
 //4.设置请求基础路径
 axios.defaults.baseURL = "http://127.0.0.1:3000/"
-//5.将axios注册vue实例
+//5.设置请求头
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+axios.defaults.responseType = 'json'
+//6.将axios注册vue实例
 Vue.prototype.axios=axios;
-//6.在main.js中引入axios.js文件
+//7.在main.js中引入axios.js文件

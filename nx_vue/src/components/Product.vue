@@ -43,6 +43,7 @@ export default {
     background: #ddd;
   }
   .cont-item{
+    text-align: center;
     margin-top: 50px;
   }
   .itemimg img{

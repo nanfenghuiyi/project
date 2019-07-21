@@ -4,18 +4,18 @@
     <titlebar :leftImg="require('../assets/ret.png')" centerTitle="分类" :rightImg="require('../assets/find.png')" :search="mysearch" :ret="myret"></titlebar>
     <!-- 主体内容 -->
     <div class="cont-item">
-      <a href="javascript:;" class="itemimg">
+      <router-link :to="{path:'product_details'}" class="itemimg">
         <img src="../assets/product/product01.jpg" alt="">
         <h3 class="itemdiv">暖心蛋糕</h3>
-      </a>
-      <a href="javascript:;" class="itemimg">
+      </router-link>
+      <router-link :to="{path:'product_details'}" class="itemimg">
         <img src="../assets/product/product01.jpg" alt="">
         <h3 class="itemdiv itemtop1">暖心蛋糕</h3>
-      </a>
-      <a href="javascript:;" class="itemimg">
+      </router-link>
+      <router-link :to="{path:'product_details'}" class="itemimg">
         <img src="../assets/product/product01.jpg" alt="">
         <h3 class="itemdiv itemtop2">暖心蛋糕</h3>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
@@ -30,7 +30,15 @@ export default {
   },
   methods:{
     mysearch(){console.log("搜索")},
-    myret(){console.log("返回上页面")},
+    myret(){
+      console.log("返回上页面")
+      if(window.history.length<=1){
+        this.$router.push({path:'/'});
+        return false;
+      }else {
+        this.$router.go(-1)
+      }
+    },
   },
   components:{
     titlebar

@@ -183,20 +183,24 @@ export default {
     mysearch(){console.log("搜索")},
     myret(){console.log("返回上页面")},
     loadMore(){
-      var lid=this.$route.query.lid;
-      this.axios.get("details?lid="+lid)
-      .then(result=>{
-        // console.log(result)
-        this.listpics=result.data.pics[lid];
-        this.listcarousels=result.data.carousels;
-        this.listproduct=result.data.product;
-        console.log(this.listpics)
-        // console.log(this.listcarousels)
-        // console.log(this.listproduct)
-      }) 
-      .catch(err=>{
-        console.log(err)
-      })
+      if (lid!="") {
+        var lid=this.$route.query.lid;
+        this.axios.get("details?lid="+lid)
+        .then(result=>{
+          // console.log(result)
+          this.listpics=result.data.pics[lid];
+          this.listcarousels=result.data.carousels;
+          this.listproduct=result.data.product;
+          console.log(this.listpics)
+          // console.log(this.listcarousels)
+          // console.log(this.listproduct)
+        }) 
+        .catch(err=>{
+          console.log(err)
+        })
+      }else{
+        console.log("商品不存在")
+      }
     },
     change(index){
       this.active=index

@@ -6,6 +6,7 @@ import recommend from './views/recommend.vue'
 import shop from './views/shop.vue'
 import user from './views/user.vue'
 import details from './views/details.vue'
+import product_details from './views/product_details.vue'
 
 Vue.use(Router)
 
@@ -13,33 +14,31 @@ export default new Router({
   routes: [
     {
       path: '/',
-      // name:Home,
       component: Home
     },
     {
       path: '/product',
-      // name:product,
       component: product
     },
     {
       path: '/recommend',
-      // name:recommend,
       component: recommend
     },
     {
       path: '/shop',
-      // name:shop,
       component: shop
     },
     {
       path: '/user',
-      // name:user,
       component: user
     },
     {
       path: '/details',
-      // name: 'details',
       component: details
+    },
+    {
+      path: '/product_details',
+      component: product_details
     },
     
   ]

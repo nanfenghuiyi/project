@@ -9,22 +9,22 @@
         <input type="checkbox" @change="selectAll">
       </div>
       <!-- 商品列表 -->
-      <div class="cart-item">
+      <div class="cart-item" v-for="(item,i) of list" :key="i">
         <div class="leftImgText">
-          <input type="checkbox">
-          <img src="../assets/nx_detail_normal.png" alt="">
-          <div class="title">介绍</div>
+          <input type="checkbox" v-model="item.cb">
+          <img :src="'127.0.0.1:3000/img/product_details'+item.img_url" alt="">
+          <div class="title" v-model="item.title"></div>
           <div class="price">
-            <span>价格</span>
+            <span v-model="`¥${item.price.toFixed(2)}`"></span>
           </div>
         </div>
-        <button>删除</button>
+        <mt-button :data-id="item.id" class="btn" @click="delItem">删除</mt-button>
       </div>
       <div>
-        <mt-button>删除选中的商品</mt-button>
+        <mt-button @click="delAll">删除选中的商品</mt-button>
         <h3>
           购物车数量：
-          <span>12</span>
+          <span style="color:red" v-text="$store.getters.getCartCount"></span>
         </h3>
       </div>
     </div>
@@ -37,7 +37,9 @@ import titlebar from "../components/coms/TitleBar";
 
 export default {
   data(){
-    return{}
+    return{
+      list:[]
+    }
   },
   methods:{
     mysearch(){console.log("搜索")},

@@ -76,6 +76,7 @@ export default {
 </script>
 <style scoped>
   .nx_container{
+    background: #fff;
     overflow: hidden;
   }
   .page-wrap{

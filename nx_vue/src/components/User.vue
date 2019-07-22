@@ -6,8 +6,8 @@
         <img src="../assets/user/登录.png" alt="">
       </div>
       <div class="user-login">
-        <a class="login" href="javascript:;">登录</a>
-        <a href="javascript:;">注册</a>
+        <router-link :to="{path:'login'}" class="login" href="javascript:;">登录</router-link>
+        <router-link :to="{path:'reg'}" href="javascript:;">注册</router-link>
       </div>
     </div>
     <!-- 订单信息 -->
@@ -91,6 +91,7 @@ export default {
 <style scoped>
 /*最外层元素*/
 .user-container{
+  text-align: center;
   background: #f5f5f5;
 }
 /*a清除格式*/

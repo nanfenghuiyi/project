@@ -142,3 +142,33 @@ server.get("/login",(req,res)=>{
     }
   })
 })
+
+//所有商品数据
+server.get("/product_details",(req,res)=>{
+  //参数
+  var pno=req.query.pno;
+  var count=req.query.count;
+  //设置默认值
+  if(!pno){pno=1};
+  if(!count){count=4};
+  //sql
+  var sql = "select lid,title,pic,price,href from nx_product limit ?,?"
+  var offset=(pno-1)*count;
+  count=parseInt(count);
+  pool.query(sql,[offset,count],(err,result)=>{
+    if(err) throw err;
+    var obj={
+      code:1,
+      msg:"查询成功",
+      data:result
+    };
+    obj.data=result;
+    var sql = "select count(*) as c from nx_product";
+    pool.query(sql,(err,result)=>{
+      if(err) throw err;
+      var pc=Math.ceil(result[0].c)
+      obj.pc=pc;
+      res.send(obj);
+    })
+  })
+})

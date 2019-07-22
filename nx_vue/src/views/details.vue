@@ -181,7 +181,15 @@ export default {
   },
   methods:{
     mysearch(){console.log("搜索")},
-    myret(){console.log("返回上页面")},
+    myret(){
+      console.log("返回上页面")
+      if(window.history.length<=1){
+        this.$router.push({path:'/'});
+        return false;
+      }else {
+        this.$router.go(-1)
+      }
+    },
     loadMore(){
       if (lid!="") {
         var lid=this.$route.query.lid;
@@ -208,7 +216,7 @@ export default {
       this.listproduct.num=this.num[index]
       this.listproduct.size=this.size[index]
       this.listproduct.kg=this.kg[index]
-    }
+    },
   },
   created(){
     this.loadMore()

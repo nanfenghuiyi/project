@@ -60,7 +60,7 @@ create table nx_user(
 -- 	name varchar(32)	#类别名称
 -- );
 
-#商品列表
+#商品详情列表
 
 create table nx_laptop(
 	lid int primary key auto_increment,
@@ -232,3 +232,52 @@ insert into nx_index_product values(null,"喵叽叽云顶小花曲奇礼盒（�
 -- 	href varchar(128)
 -- );
 -- insert into nx_img_active values(null,"milk.jpg","")
+
+#所有商品栏表
+
+create table nx_product(
+	lid int primary key auto_increment,
+	title varchar(64),	#商品标题
+	details varchar(128),	#详细描述
+	pic varchar(128),	#图片
+	price decimal(10,2),	#商品价格
+	href VARCHAR(128)	#图片地址
+);
+			#蛋糕
+insert into nx_product values(null,"雪域牛乳芝士蛋糕·特浓","C位出道 实力打Call","list_10000.jpg",298,"product_details.html?lid=1");
+insert into nx_product values(null,"牛奶星球蛋糕","儿童节限定 童趣无限","list_10001.jpg",218,"product_details.html?lid=2");
+insert into nx_product values(null,"雪域牛乳蛋糕·特浓",null,"list_10002.jpg",218,"product_details.html?lid=3");
+insert into nx_product values(null,"草莓拿破仑蛋糕",null,"list_10003.jpg",218,"product_details.html?lid=4");
+insert into nx_product values(null,"环游世界蛋糕","+58元升级","list_10004.jpg",218,"product_details.html?lid=5");
+insert into nx_product values(null,"数字蛋糕","第2件半价 第3件免单","list_10005.jpg",218,"product_details.html?lid=6");
+insert into nx_product values(null,"草莓千层蛋糕",null,"list_10006.jpg",218,"product_details.html?lid=7");
+insert into nx_product values(null,"雪域牛乳芝士蛋糕·特浓花样",null,"list_10007.jpg",336,"product_details.html?lid=8");
+			#小食
+insert into nx_product values(null,"喵叽叽云顶小花曲奇礼盒·宠溺双拼（原味+咖啡味）",null,"list_10008.jpg",158,"product_details.html?lid=9");
+insert into nx_product values(null,"喵叽叽云顶小花曲奇礼盒·元气双拼（原味+巧克力味）",null,"list_10009.jpg",158,"product_details.html?lid=10");
+insert into nx_product values(null,"喵叽叽云顶小花曲奇礼盒（原味）",null,"list_10010.jpg",158,"product_details.html?lid=11");
+insert into nx_product values(null,"喵叽叽云顶小花曲奇礼盒（巧克力味）",null,"list_10011.jpg",298,"product_details.html?lid=12");
+insert into nx_product values(null,"喵叽叽云顶小花曲奇礼盒（咖啡味）",null,"list_10012.jpg",158,"product_details.html?lid=13");
+insert into nx_product values(null,"心悦团圆礼盒（四枚入）","团圆创意礼盒 中秋馈赠佳礼","list_10012.jpg",218,"product_details.html?lid=14");
+insert into nx_product values(null,"心悦团圆礼盒（六枚入）","金奖月饼&创意礼盒 中秋馈赠佳礼","list_10012.jpg",298,"product_details.html?lid=15");
+insert into nx_product values(null,"费南雪金砖形礼盒（8枚入）","财富自由新标配","list_10012.jpg",128,"product_details.html?lid=16");
+
+
+#以下代码创建购物车表与添加测试数据
+
+CREATE TABLE nx_cart(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  img_url VARCHAR(25),
+  price   DECIMAL(10,2),
+  title   VARCHAR(255),
+  count   INT,
+  uid     INT
+);
+INSERT INTO nx_cart VALUES(null,'011.jpg',100,'罗技鼠标',1,1);
+INSERT INTO nx_cart VALUES(null,'012.jpg',110,'内存条',1,1);
+INSERT INTO nx_cart VALUES(null,'011.jpg',101,'罗技鼠标3',1,1);
+INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标4',1,1);
+INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标5',1,1);
+INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标6',1,1);
+INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标7',1,1);
+INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标8',1,1);

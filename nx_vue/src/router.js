@@ -7,6 +7,8 @@ import shop from './views/shop.vue'
 import user from './views/user.vue'
 import details from './views/details.vue'
 import product_details from './views/product_details.vue'
+import login from './views/login.vue'
+import reg from './views/reg.vue'
 
 Vue.use(Router)
 
@@ -39,6 +41,14 @@ export default new Router({
     {
       path: '/product_details',
       component: product_details
+    },
+    {
+      path: '/login',
+      component: login
+    },
+    {
+      path: '/reg',
+      component: reg
     },
     
   ]

@@ -172,3 +172,49 @@ server.get("/product_details",(req,res)=>{
     })
   })
 })
+
+//查询指定用户购物车列表
+server.get("/cart",(req,res)=>{
+  //参数
+  var uid = req.session.uid;
+  console.log(uid);
+  if(!uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+  };
+  //sql
+  var sql = "select id,img_url,title,price,count from nx_cart where uid=?";
+  pool.query(sql,[],(err,result=>{
+    if(err) throw err;
+    res.send({code:1,data:result})
+  }))
+});
+//删除购物车中商品
+server.get("/delItem",(req,res)=>{
+  //参数购物车 id
+  var id=req.query.id;
+  //sql
+  var sql = "delete from nx_cart where id=?";
+  pool.query(sql,[id],(err,result)=>{
+    if(err) throw err;
+    if (result.affectedRows>0) {
+      res.send({code:1,msg:"删除成功"})
+    } else {
+      res.send({code:-1,msg:"删除失败"})
+    }
+  })
+});
+//删除购物车中多个选中的商品
+server.get("/delAll",(req,res)=>{
+  //参数
+  var ids=req.query.ids;
+  var sql = `delete from nx_cart there id in (${ids})`;
+  pool.query(sql,(err,result)=>{
+    if(err) throw err;
+    if(result.affectedRows>0){
+      res.send({code:1,msg:"删除成功"})
+    }else{
+      res.send({code:-1,msg:"删除失败"})
+    }
+  })
+})

@@ -13,9 +13,9 @@
         <div class="leftImgText">
           <input type="checkbox" v-model="item.cb">
           <img :src="'127.0.0.1:3000/img/product_details'+item.img_url" alt="">
-          <div class="title" v-model="item.title"></div>
+          <div class="title" v-text="item.title"></div>
           <div class="price">
-            <span v-model="`¥${item.price.toFixed(2)}`"></span>
+            <span v-text="`¥${item.price.toFixed(2)}`"></span>
           </div>
         </div>
         <mt-button :data-id="item.id" class="btn" @click="delItem">删除</mt-button>
@@ -52,7 +52,78 @@ export default {
         this.$router.go(-1)
       }
     },
-    selectAll(){}
+    loadMore(){
+      var url="cart";
+      this.axios.get(url).then(result=>{
+        console.log(result);
+        var rows=result.data.data;
+        console.log(rows)
+        // 创建循环为数组中每个对象添加cb属性，控制商品前的复选框
+        for (var item of rows) {
+          //添加cb属性
+          item.cb=false;
+          //更新购物车数量
+          this.$store.commit("increment");
+        };
+        //保存数据
+        this.list=rows;
+      })/* .catch(err=>{console.log(err)}) */
+    },
+    //删除多个商品
+    delAll(){
+      //创建变量保存空字符串
+      var str="";
+      //创建循环拼接字符串内容
+      for (var item of this.list) {
+        if(item.cb){
+          str+=item.id+","
+        }
+      };
+      str=str.substring(0,str.length-1)
+      //判断用户是否选中商品
+      if (str.length==0) {
+        this.$toast("请选中商品");
+        return;
+      };
+      //发送ajax请求
+      var url="delAll";
+      var obj={ids:str};
+      this.axios.get(url,{params:obj})
+      .then(result=>{
+        //重新加载数据
+        this.loadMore();
+      })
+    },
+    //确认删除
+    delItem(e){
+      //获取当前商品id
+      var id=e.target.detaset.id;
+      //提示交互框
+      this.$messagebox("是否删除指定数据")
+      .then(action=>{
+        //用户选择确认，发送ajax删除数据
+        var url="delItem";
+        var obj={id};
+        this.axios.get(url,{params:obj})
+        .then(result=>{
+          this.loadMore()
+        })
+      }).catch(err=>{
+        consol.log(err);
+        return;
+      })
+    },
+    //全选按钮状态
+    selectAll(e){
+      var cb=e.target.checked;
+      //依据状态修改列表cb
+      for (var item of this.list) {
+        item.cb=cb;
+      }
+    }
+  },
+  created(){
+    this.loadMore()
   },
   components:{
     titlebar

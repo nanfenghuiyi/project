@@ -16,39 +16,63 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      meta:{isLogin:false}
     },
     {
       path: '/product',
-      component: product
+      component: product,
+      meta: {
+        isLogin: false
+      }
     },
     {
       path: '/recommend',
-      component: recommend
+      component: recommend,
+      meta: {
+        isLogin: false
+      }
     },
     {
       path: '/shop',
-      component: shop
+      component: shop, meta: {
+        isLogin: true
+      }
     },
     {
       path: '/user',
-      component: user
+      component: user,
+      meta: {
+        isLogin: false
+      }
     },
     {
       path: '/details',
-      component: details
+      component: details,
+      meta: {
+        isLogin: false
+      }
     },
     {
       path: '/product_details',
-      component: product_details
+      component: product_details,
+      meta: {
+        isLogin: false
+      }
     },
     {
       path: '/login',
-      component: login
+      component: login,
+      meta: {
+        isLogin: false
+      }
     },
     {
       path: '/reg',
-      component: reg
+      component: reg,
+      meta: {
+        isLogin: false
+      }
     },
     
   ]

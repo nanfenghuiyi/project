@@ -1,12 +1,9 @@
 <template>
   <div class="nx_container">
     <div class="page-wrap">
-      <!-- 面板 -->
-      <mt-tab-container v-model="active">
-        <mt-tab-container-item id="shop">
-          <shop></shop>
-        </mt-tab-container-item>
-      </mt-tab-container>
+      <!-- 顶部导航 -->
+      <shop></shop>
+      <!-- 主要内容 -->
       <!-- 底部导航栏 -->
       <mt-tabbar v-model="active" fixed>
         <mt-tab-item id="index" @click.native="changeState(0);btn('')">

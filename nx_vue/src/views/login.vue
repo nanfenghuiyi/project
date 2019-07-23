@@ -67,6 +67,11 @@ export default {
       this.axios.get(url,{params:obj})
       .then(result=>{
         if(result.data.code>0){
+          //设置Vuex登录标志为true，默认userLogin为false
+          this.$store.dispatch("userLogin", true);
+          //我们设置一个名为Flag，值为isLogin的字段，作用是如果Flag有值且为isLogin的时候，证明用户已经登录了。
+          localStorage.setItem("Flag", "isLogin");
+          //登录状态提示
           this.$toast(result.data.msg);
           this.$router.push("/");
         }else{

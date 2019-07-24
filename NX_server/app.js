@@ -136,6 +136,9 @@ server.get("/login",(req,res)=>{
     if(err) throw err;
     console.log(result,typeof(result))
     if (result.length > 0){
+      //将当前登录用户uid保存session
+      //result=[{id:1}]
+      req.session.uid =result[0].uid;
       res.send({code:1,msg:"登录成功"});
     }else {
       res.send({code:0,msg:"登录失败"});
@@ -177,17 +180,19 @@ server.get("/product_details",(req,res)=>{
 server.get("/cart",(req,res)=>{
   //参数
   var uid = req.session.uid;
-  console.log(uid);
   if(!uid){
     res.send({code:-1,msg:"请登录"});
     return;
   };
   //sql
   var sql = "select id,img_url,title,price,count from nx_cart where uid=?";
-  pool.query(sql,[],(err,result=>{
-    if(err) throw err;
-    res.send({code:1,data:result})
-  }))
+  pool.query(sql,[uid],(err,result)=>{
+    if (err) throw err;
+    res.send({
+      code: 1,
+      data: result
+    })
+  })
 });
 //删除购物车中商品
 server.get("/delItem",(req,res)=>{

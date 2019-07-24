@@ -26,30 +26,6 @@ Vue.use(iView)
 Vue.use(Vuex)
 
 //8：创建store
-/* var store = new Vuex.Store({
-  //vuex中全局共享的数据
-  state: {
-    cartCount: 0
-  },
-  //修改vuex中全局共享的数据
-  mutations: {
-    //购物车数量加1
-    increment(state) {
-      state.cartCount++;
-    },
-    // clear(){},
-    //购物车数量增加指定值 5
-    updateCount(state, c) {
-      state.cartCount += c;
-    }
-  },
-  //获取vuex中全局共享的数据
-  getters: {
-    getCartCount: function (state) {
-      return state.cartCount;
-    }
-  }
-}) */
 
 //验证登录
 router.beforeEach((to,from,next)=>{

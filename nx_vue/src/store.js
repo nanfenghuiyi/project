@@ -21,6 +21,10 @@ export default new Vuex.Store({
   },
   //设置属性状态
   mutations: {
+    //清除vuex中全局共享的数据
+    clearCount(state){
+      state.cartCount=0;
+    },
     //修改vuex中全局共享的数据
     increment(state){
       state.cartCount++;

@@ -24,7 +24,7 @@
         <mt-button @click="delAll">删除选中的商品</mt-button>
         <h3>
           购物车数量：
-          <span style="color:red" v-text="$store.getters.getCartCount"></span>
+          <span id="num" style="color:red" v-text="$store.getters.getCartCount"></span>
         </h3>
       </div>
     </div>
@@ -55,10 +55,11 @@ export default {
     loadMore(){
       var url="cart";
       this.axios.get(url).then(result=>{
-        console.log(result);
+        // console.log(result);
         var rows=result.data.data;
         console.log(rows)
         // 创建循环为数组中每个对象添加cb属性，控制商品前的复选框
+        this.$store.commit("clearCount")
         for (var item of rows) {
           //添加cb属性
           item.cb=false;
@@ -67,7 +68,12 @@ export default {
         };
         //保存数据
         this.list=rows;
-      })/* .catch(err=>{console.log(err)}) */
+      })
+      .catch(err=>{
+        console.log(err);
+        this.$messagebox("请登录后查看");
+        this.$router.push({path:'login'})
+      })
     },
     //删除多个商品
     delAll(){
@@ -97,19 +103,21 @@ export default {
     //确认删除
     delItem(e){
       //获取当前商品id
-      var id=e.target.detaset.id;
+      console.log(e.target.dataset)
+      var id=e.target.dataset.id;
+      console.log(id)
       //提示交互框
-      this.$messagebox("是否删除指定数据")
-      .then(action=>{
+      this.$messagebox.confirm("是否删除指定数据")
+      .then(result=>{
         //用户选择确认，发送ajax删除数据
         var url="delItem";
-        var obj={id};
+        var obj={id:id};
         this.axios.get(url,{params:obj})
         .then(result=>{
           this.loadMore()
         })
       }).catch(err=>{
-        consol.log(err);
+        console.log(err);
         return;
       })
     },

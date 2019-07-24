@@ -142,7 +142,7 @@
           购物车
         </div>
       </div>
-      <div class="tabright">
+      <div class="tabright" @click="goshop">
         <a>加入购物车</a>
       </div>
     </div>

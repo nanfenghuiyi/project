@@ -87,6 +87,9 @@ insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-
 insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-4人食",5,"15×15×3",545,1);
 insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-4人食",5,"15×15×3",545,1);
 insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-4人食",5,"15×15×3",545,1);
+insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-4人食",5,"15×15×3",545,1);
+insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-4人食",5,"15×15×3",545,1);
+insert into nx_laptop values(null,1,1,"雪域牛乳芝士蛋糕·特浓",298,"2-4人食",5,"15×15×3",545,1);
 
 #商品详情轮播图
 
@@ -123,6 +126,12 @@ insert into nx_laptop_carousel values(null,1,"display_13164_61231.jpg","carousel
 insert into nx_laptop_carousel values(null,1,"display_13164_61232.jpg","carousel2",null);
 insert into nx_laptop_carousel values(null,1,"display_13164_61231.jpg","carousel1",null);
 insert into nx_laptop_carousel values(null,1,"display_13164_61232.jpg","carousel2",null);
+insert into nx_laptop_carousel values(null,1,"display_13164_61231.jpg","carousel1",null);
+insert into nx_laptop_carousel values(null,1,"display_13164_61232.jpg","carousel2",null);
+insert into nx_laptop_carousel values(null,1,"display_13164_61231.jpg","carousel1",null);
+insert into nx_laptop_carousel values(null,1,"display_13164_61232.jpg","carousel2",null);
+insert into nx_laptop_carousel values(null,1,"display_13164_61231.jpg","carousel1",null);
+insert into nx_laptop_carousel values(null,1,"display_13164_61232.jpg","carousel2",null);
 
 
 #商品详情图表
@@ -131,22 +140,26 @@ create table nx_laptop_pic(
 	pid int primary key auto_increment,
 	family_id int,	#所属型号家族编号
 	video varchar(128),	#视频路径
+	details_img varchar(128),#商品图片
 	img varchar(128),	#1图片路径
 	pic varchar(128)	#2图片路径
 );
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
-insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10000.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10001.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10002.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10003.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10004.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10005.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10006.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10007.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10008.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10009.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10010.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10011.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10012.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10012.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10012.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
+insert into nx_laptop_pic values(null,1,"17秒删减版-加文字(1).mp4","list_10012.jpg","雪域牛乳芝士pc.jpg","雪域商详_02(1).jpg");
 
 #商品优惠表
 
@@ -156,6 +169,12 @@ create table nx_laptop_onsale(
 	title varchar(128),	#优惠1详情
 	subtitle varchar(128) #优惠2详情
 );
+insert into nx_laptop_onsale values(null,1,"【甜心 给你双倍惊喜
+】2019.5.31-2019.7.31 每周四至周六，单笔订单购买本款蛋糕，随单赠价值158元「喵叽叽曲奇·随机礼盒」1份，随机口味，先到先得，赠完即止。本活动不与其他优惠同享。","【“啪”你一脸大冒险】2019.1.10起，购买蛋糕馆内任意蛋糕，加39元可购价值88元的「啪啪脸蛋糕」1个，多买多得。配送时间：2019.1.12起。");
+insert into nx_laptop_onsale values(null,1,"【甜心 给你双倍惊喜
+】2019.5.31-2019.7.31 每周四至周六，单笔订单购买本款蛋糕，随单赠价值158元「喵叽叽曲奇·随机礼盒」1份，随机口味，先到先得，赠完即止。本活动不与其他优惠同享。","【“啪”你一脸大冒险】2019.1.10起，购买蛋糕馆内任意蛋糕，加39元可购价值88元的「啪啪脸蛋糕」1个，多买多得。配送时间：2019.1.12起。");
+insert into nx_laptop_onsale values(null,1,"【甜心 给你双倍惊喜
+】2019.5.31-2019.7.31 每周四至周六，单笔订单购买本款蛋糕，随单赠价值158元「喵叽叽曲奇·随机礼盒」1份，随机口味，先到先得，赠完即止。本活动不与其他优惠同享。","【“啪”你一脸大冒险】2019.1.10起，购买蛋糕馆内任意蛋糕，加39元可购价值88元的「啪啪脸蛋糕」1个，多买多得。配送时间：2019.1.12起。");
 insert into nx_laptop_onsale values(null,1,"【甜心 给你双倍惊喜
 】2019.5.31-2019.7.31 每周四至周六，单笔订单购买本款蛋糕，随单赠价值158元「喵叽叽曲奇·随机礼盒」1份，随机口味，先到先得，赠完即止。本活动不与其他优惠同享。","【“啪”你一脸大冒险】2019.1.10起，购买蛋糕馆内任意蛋糕，加39元可购价值88元的「啪啪脸蛋糕」1个，多买多得。配送时间：2019.1.12起。");
 insert into nx_laptop_onsale values(null,1,"【甜心 给你双倍惊喜
@@ -267,17 +286,18 @@ insert into nx_product values(null,"费南雪金砖形礼盒（8枚入）","财�
 
 CREATE TABLE nx_cart(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  img_url VARCHAR(25),
+  img_url VARCHAR(128),
   price   DECIMAL(10,2),
   title   VARCHAR(255),
+	pace	varchar(64),
   count   INT,
   uid     INT
 );
-INSERT INTO nx_cart VALUES(null,'011.jpg',100,'罗技鼠标',1,1);
+/* INSERT INTO nx_cart VALUES(null,'011.jpg',100,'罗技鼠标',1,1);
 INSERT INTO nx_cart VALUES(null,'012.jpg',110,'内存条',1,1);
 INSERT INTO nx_cart VALUES(null,'011.jpg',101,'罗技鼠标3',1,1);
 INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标4',1,1);
 INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标5',1,1);
 INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标6',1,1);
 INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标7',1,1);
-INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标8',1,1);
+INSERT INTO nx_cart VALUES(null,'011.jpg',102,'罗技鼠标8',1,1); */

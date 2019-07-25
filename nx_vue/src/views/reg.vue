@@ -59,6 +59,7 @@ export default {
       var obj={phone,upwd};
       this.axios.get(url,{params:obj})
       .then(result=>{
+        console.log(result)
         if(result.data.code > 0){
           this.$toast(result.data.msg);
           this.$router.push("login");

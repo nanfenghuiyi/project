@@ -71,7 +71,7 @@ server.get("/details",(req,res)=>{
         if(err) throw err;
         console.log(result);
         output.carousels=result;
-        var sql3 = "select video,img,pic from nx_laptop_pic where family_id=?";
+        var sql3 = "select video,details_img,img,pic from nx_laptop_pic where family_id=?";
         pool.query(sql3, [family_id], (err, result) => {
           if(err) throw err;
           console.log(result);
@@ -93,18 +93,19 @@ server.get("/details",(req,res)=>{
 
 //注册数据
 server.get("/reg",(req,res)=>{
-  var obj=req.query;
-  console.log(obj)
-  if(!obj.phone){
+  var $phone=req.query.phone;
+  var $upwd=req.query.upwd;
+  if(!$phone){
     res.send("电话不能为空");
     return;
   };
-  if(!obj.upwd){
+  if(!$upwd){
     res.send("密码不能为空")
     return;
   };
-  var sql="insert into nx_user set ?";
-  pool.query(sql,[obj],(err,result)=>{
+  var sql="insert into nx_user(phone,upwd) values(?,md5(?))";
+  pool.query(sql,[$phone,$upwd],(err,result)=>{
+    console.log(result)
     if(err) throw err;
     if(result.affectedRows<0){
       res.send({code:0,msg:"注册失败"})
@@ -131,7 +132,7 @@ server.get("/login",(req,res)=>{
     res.send("密码不能为空");
     return;
   }; */
-  var sql = "select * from nx_user where phone=? and upwd=?";
+  var sql = "select * from nx_user where phone=? and upwd=md5(?)";
   pool.query(sql,[$phone,$upwd],(err,result)=>{
     if(err) throw err;
     console.log(result,typeof(result))
@@ -178,7 +179,7 @@ server.get("/product_details",(req,res)=>{
 
 //查询指定用户购物车列表
 server.get("/cart",(req,res)=>{
-  //参数
+  //获取session中的参数
   var uid = req.session.uid;
   if(!uid){
     res.send({code:-1,msg:"请登录"});
@@ -220,6 +221,35 @@ server.get("/delAll",(req,res)=>{
       res.send({code:1,msg:"删除成功"})
     }else{
       res.send({code:-1,msg:"删除失败"})
+    }
+  })
+})
+
+//将商品加入购物车
+server.get("/incart",(req,res)=>{
+  //获取session中的参数
+  var uid=req.session.uid;
+  //获取参数
+  var img_url=req.query.img_url;
+  var price=req.query.price;
+  var title=req.query.title;
+  var pace=req.query.pace;
+  var count=req.query.count;
+  var obj={img_url,price,title,pace,count,uid};
+  //sql
+  var sql = "insert into nx_cart set ?";
+  pool.query(sql,[obj],(err,result)=>{
+    if (err) throw err;
+    if (result.affectedRows < 0) {
+      res.send({
+        code: 0,
+        msg: "添加失败"
+      })
+    } else {
+      res.send({
+        code: 1,
+        msg: "添加成功"
+      })
     }
   })
 })

@@ -121,6 +121,48 @@
         </div>
       </div>
     </div>
+    <!-- 商品的选择情况 -->
+    <div v-show="productShow" class="product-bg">
+      <div class="product-details">
+        <div class="product-top">
+          <div @click="cartHidden" class="details-none">
+            <img src="../assets/details/叉号.png" alt="">
+          </div>
+          <div class="details-top">
+            <div class="details-img">
+              <img :src="'http://127.0.0.1:3000/img/product/'+listpics.details_img" alt="">
+            </div>
+            <div class="details-shop">
+              <div id="price" class="details-price section-color price" v-text="'¥'+listproduct.price"></div>
+              <div class="details-title title" v-text="listproduct.title"></div>
+            </div>
+          </div>
+        </div>
+        <div class="details-center">
+          建议食用人数：
+          <div class="section-spce">
+            <div  v-for="(item,index) of itemList" :key="index" :class="active==index?'activeClass':''">
+              <div @click="change(index)">{{item}}</div> 
+            </div>
+          </div>
+          <div class="details-bottom">
+            <div>购买数量：</div> 
+            <div class="details-num">
+              <div @click="countnum(-1)">
+                <img src="../assets/details/减.png" alt="">
+              </div>
+              <input v-model="cnum" type="number" >
+              <div @click="countnum(1)">
+                <img src="../assets/details/加.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <mt-button class="details-btn" @click="inCart()">加入购物车</mt-button>
+        </div>
+      </div>
+    </div>
     <!-- 图片介绍 -->
     <div class="detailsImg">
       <div>
@@ -142,8 +184,8 @@
           购物车
         </div>
       </div>
-      <div class="tabright" @click="goshop">
-        <a>加入购物车</a>
+      <div @click="cartShow" class="showbtn">
+        加入购物车
       </div>
     </div>
   </div>
@@ -176,7 +218,9 @@ export default {
       num:["5","10","15","20"],
       size:["15x15x3","20x20x3","25x25x3","33x33x3"],
       kg:["545","1090","1635","2725"],
-      price:["298","458","680","1120"]
+      price:["298","458","680","1120"],
+      productShow:false,
+      cnum:1,
     }
   },
   methods:{
@@ -195,11 +239,11 @@ export default {
         var lid=this.$route.query.lid;
         this.axios.get("details?lid="+lid)
         .then(result=>{
-          // console.log(result)
+          console.log(result)
           this.listpics=result.data.pics[lid];
           this.listcarousels=result.data.carousels;
           this.listproduct=result.data.product;
-          console.log(this.listpics)
+          // console.log(this.listpics)
           // console.log(this.listcarousels)
           // console.log(this.listproduct)
         }) 
@@ -217,6 +261,43 @@ export default {
       this.listproduct.size=this.size[index]
       this.listproduct.kg=this.kg[index]
     },
+    countnum(n){
+      this.cnum+=n;
+      if(this.cnum<1){
+        this.cnum=1
+      }
+    },
+    cartShow(){
+      /***滑动限制***/
+      var mo=function(e){e.preventDefault();};
+      document.body.style.overflow='hidden';
+      document.addEventListener("touchmove",mo,false);//禁止页面滑动
+      // 显示遮罩层
+      this.productShow=true;
+    },
+    cartHidden(){
+      /***取消滑动限制***/
+      var mo=function(e){e.preventDefault();};
+      document.body.style.overflow='';//出现滚动条
+      document.removeEventListener("touchmove",mo,false);
+      // 隐藏遮罩层
+      this.productShow=false;
+    },
+    inCart(){
+      this.productShow=false;
+      this.$toast("添加成功");
+      var details_img=this.listpics.details_img;
+      var price=this.listproduct.price;
+      var title=this.listproduct.title;
+      var spce=this.itemList[this.active];
+      var count=this.cnum;
+    },
+      /***取消滑动限制***/
+      move(){
+        var mo=function(e){e.preventDefault();};
+        document.body.style.overflow='';//出现滚动条
+        document.removeEventListener("touchmove",mo,false);
+      }
   },
   created(){
     this.loadMore()
@@ -279,11 +360,11 @@ export default {
 }
 /* 右边 */
 .tabright{
-  text-align: center;
   margin: auto 20px;
 }
-.tabright>a{
-  display: block;
+.showbtn{
+  text-align: center;
+  margin: auto 10px;
   color: #fff;
   width: 130px;
   height: 30px;
@@ -314,7 +395,7 @@ export default {
   height: 15px;
 }
 .section-spce{
-  margin-top: 3px;
+  margin-top: 10px;
   text-align: center;
   display: flex;
   justify-content: space-around;
@@ -401,14 +482,110 @@ export default {
   display: flex;
   flex-wrap: wrap-reverse
 }
-.eatstyle{
-  width: 72px;
-}
 /* 图片介绍 */
 .detailsImg{
   margin-bottom: 100px;
 }
 .detailsImg img{
   margin-top: 10px;
+}
+.eatstyle{
+  width: 72px;
+}
+/*选择的商品详情*/
+/*遮罩层*/
+.product-bg{
+  position: relative;
+  background:rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 100%;
+  height: 100%;
+}
+/*遮罩层内部内容*/
+.product-details{
+  position: absolute;
+  top: 30%;
+  left: 0;
+  background: #fff;
+  height: 70%;
+  width: 90%;
+  padding: 0 5%;
+  border-radius: 10px;
+}
+/*隐藏键*/
+.details-none{
+  margin-top: 15px;
+  float: right;
+}
+.details-none img{
+  width: 25px;
+  height: 25px;
+}
+/*上部图片，价格，商品*/
+.details-top{
+  clear: both;
+  display: flex;
+}
+.details-img img{
+  width: 150px;
+  height: 150px;
+}
+.details-shop{
+  margin-left: 15px;
+}
+.details-price{
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+/*中间食用人数*/
+.details-center{
+  margin-top: 30px;
+  height: 50%;
+  overflow: auto;
+  
+}
+.details-center .section-spce{
+  margin-top: 20px;
+}
+/*下面的购买数量*/
+/*左*/
+.details-bottom{
+  margin-bottom: 30px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+}
+.details-bottom div:first-child{
+  margin: auto 0;
+}
+/*右*/
+.details-num{
+  display: flex;
+}
+.details-num img{
+  width: 20px;
+  height: 20px;
+}
+.details-bottom input{
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 30px;
+  text-align: center;
+  border: 0;
+}
+/*加入购物车按钮*/
+.details-btn{
+  position: fixed;
+  top: 100%;
+  left: 10%;
+  transform: translateY(-110%);
+  width: 80%;
+  background: #FF4001;
+  color: #fff;
+  border-radius: 50px
 }
 </style>

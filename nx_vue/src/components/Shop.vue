@@ -4,28 +4,64 @@
     <titlebar :leftImg="require('../assets/ret.png')" centerTitle="购物车" :rightImg="require('../assets/find.png')" :search="mysearch" :ret="myret"></titlebar>
     <div class="cart">
       <!-- 全选 -->
-      <div class="selectAll">
-        全选
-        <input type="checkbox" @change="selectAll">
-      </div>
       <!-- 商品列表 -->
       <div class="cart-item" v-for="(item,i) of list" :key="i">
-        <div class="leftImgText">
-          <input type="checkbox" v-model="item.cb">
-          <img :src="'127.0.0.1:3000/img/product_details'+item.img_url" alt="">
-          <div class="title" v-text="item.title"></div>
-          <div class="price">
-            <span v-text="`¥${item.price.toFixed(2)}`"></span>
+        <!-- 左图文 -->
+        <div class="cart-left">
+          <!-- 左input -->
+          <div class="cart-input">
+            <input type="checkbox" v-model="item.cb">
+          </div>
+          <!-- 中间内容 -->
+          <div class="centerImgText">
+            <!--  左图片 -->
+            <div class="centerImg">
+              <img :src="'http://127.0.0.1:3000/img/product_details/'+item.img_url" alt="">
+            </div>
+            <!-- 右名称，价格，数量 -->
+            <div class="rightText">
+              <div class="title" v-text="item.title"></div>
+              <div class="price">
+                售价：
+                <span v-text="`¥${(item.price*item.cnum).toFixed(2)}`"></span>
+                元
+              </div>
+              <div class="details-num">
+                <div @click="countnum(-1)">
+                  <img src="../assets/details/减.png" alt="">
+                </div>
+                <div class="cnum" v-text="item.cnum"></div>
+                <div @click="countnum(1)">
+                  <img src="../assets/details/加.png" alt="">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <mt-button :data-id="item.id" class="btn" @click="delItem">删除</mt-button>
+        <!-- 右删除 -->
+        <div class="cart-right" :data-id="item.id"  @click="delItem">
+          <img src="../assets/details/删除.png" alt="">
+        </div>
+        <!-- <mt-button type="danger" :data-id="item.id" class="btn" @click="delItem">删除</mt-button> -->
       </div>
-      <div>
-        <mt-button @click="delAll">删除选中的商品</mt-button>
+      <div class="shop-del">
         <h3>
-          购物车数量：
-          <span id="num" style="color:red" v-text="$store.getters.getCartCount"></span>
+          购物车商品数量：
+          <span id="num" style="color:red" v-text="Allnum"></span>
         </h3>
+        <h3>
+          购物车商品总价：
+          <span style="color:red" v-text="Allprice"></span>
+        </h3>
+      </div>
+      <div class="login-btn">
+        <div class="selectAll">
+          <input type="checkbox" @change="selectAll">
+          <mt-button class="del-btn" type="danger" @click="delAll">删除</mt-button>
+        </div>
+        <div>
+          <mt-button class="go-btn">立即购买</mt-button>
+        </div>
       </div>
     </div>
   </div>
@@ -38,7 +74,9 @@ import titlebar from "../components/coms/TitleBar";
 export default {
   data(){
     return{
-      list:[]
+      list:[],
+      Allprice:'',
+      Allnum:''
     }
   },
   methods:{
@@ -55,7 +93,7 @@ export default {
     loadMore(){
       var url="cart";
       this.axios.get(url).then(result=>{
-        // console.log(result);
+        console.log(result);
         var rows=result.data.data;
         console.log(rows)
         // 创建循环为数组中每个对象添加cb属性，控制商品前的复选框
@@ -64,10 +102,22 @@ export default {
           //添加cb属性
           item.cb=false;
           //更新购物车数量
-          this.$store.commit("increment");
+          // this.$store.commit("increment");
         };
         //保存数据
         this.list=rows;
+        //计算总价
+        var money=0;
+        var num=0;
+        for (var i = 0; i < rows.length; i++) {
+          if(rows[i]){
+            money+=rows[i].cnum*rows[i].price
+            num+=rows[i].cnum
+          }
+        }
+        this.Allprice=money.toFixed(2)
+        this.Allnum=num
+        console.log(this.Allnum)
       })
       .catch(err=>{
         console.log(err);
@@ -128,7 +178,7 @@ export default {
       for (var item of this.list) {
         item.cb=cb;
       }
-    }
+    },
   },
   created(){
     this.loadMore()
@@ -141,35 +191,92 @@ export default {
 
 <style scoped>
   .cart{
-    margin: 5px;
+    padding: 5px;
     text-align: left;
     margin-top: 50px;
+    margin-bottom: 100px;
   }
-  .selectAll{
-    margin-left: 15px;
-  }
+  /*商品列表*/
   .cart-item{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #ccc;
+    padding: 10px;
+    overflow: auto;
   }
-  .leftImgText{
+  .cart-left{
     display: flex;
-    align-items: center;
   }
-  .leftImgText img{
-    width: 50px;
-    height: 50px;
+  /* 左input */
+  .cart-input{
+    margin: auto 0;
   }
-  .title{
-    width: 100px;
-    margin-left: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  /* 中间内容 */
+  .centerImgText{
+    display: flex;
+    justify-content:left
+  }
+  /*左图*/
+  .centerImg img{
+    width: 120px;
+    height: 120px;
+  }
+  /*右内容*/
+  .rightText{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column
   }
   .price{
-    margin-left: 50px;
+    line-height: 50px;
+    color: #bbb
+  }
+  /*数量加减*/
+  .details-num{
+    display: flex;
+    text-align: center;
+  }
+  .details-num div{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+  }
+  .cnum,.details-num img{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+  /*右删除*/
+  .cart-right{
+    display: flex;
+    align-items: flex-end
+  }
+  .cart-right img{
+    width: 30px;
+    height: 30px;
+  }
+  /*删除按钮*/
+  .shop-del{
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  /*购买按钮*/
+  .login-btn{
+    padding: 10px;
+    display:flex;
+    justify-content: space-between;
+    width: 95%;
+    background: #fdccda;
+    color: #fff;
+    position: fixed;
+    top: 100%;
+    left: 0;
+    transform: translateY(-200%);
+  }
+  .del-btn{
+    margin-left: 20px;
+  }
+  .go-btn{
+    background: #FF4001;
+    color: #fff;
   }
 </style>

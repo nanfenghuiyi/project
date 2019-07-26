@@ -50,7 +50,7 @@ export default new Router({
       path: '/details',
       component: details,
       meta: {
-        isLogin: false
+        isLogin: true
       }
     },
     {

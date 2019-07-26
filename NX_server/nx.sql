@@ -290,7 +290,7 @@ CREATE TABLE nx_cart(
   price   DECIMAL(10,2),
   title   VARCHAR(255),
 	pace	varchar(64),
-  count   INT,
+  cnum   INT,
   uid     INT
 );
 /* INSERT INTO nx_cart VALUES(null,'011.jpg',100,'罗技鼠标',1,1);

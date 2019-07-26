@@ -175,11 +175,11 @@
     <!-- 底部导航 -->
     <div class="tab">
       <div class="tableft">
-        <div class="tabImg">
+        <div @click="goHome" class="tabImg">
           <img src="../assets/nx_page_selected.png" alt="">
           首页
         </div>
-        <div class="tabImg">
+        <div @click="goCart" class="tabImg">
           <img src="../assets/nx_shop_selected.png" alt="">
           购物车
         </div>
@@ -225,6 +225,7 @@ export default {
   },
   methods:{
     mysearch(){console.log("搜索")},
+    // 返回
     myret(){
       console.log("返回上页面")
       if(window.history.length<=1){
@@ -234,6 +235,7 @@ export default {
         this.$router.go(-1)
       }
     },
+    // 商品加载
     loadMore(){
       if (lid!="") {
         var lid=this.$route.query.lid;
@@ -254,6 +256,7 @@ export default {
         console.log("商品不存在")
       }
     },
+    // 点击数据修改
     change(index){
       this.active=index
       this.listproduct.price=this.price[index]
@@ -261,12 +264,14 @@ export default {
       this.listproduct.size=this.size[index]
       this.listproduct.kg=this.kg[index]
     },
+    // 商品数量
     countnum(n){
       this.cnum+=n;
       if(this.cnum<1){
         this.cnum=1
       }
     },
+    // 显示遮罩层
     cartShow(){
       /***滑动限制***/
       var mo=function(e){e.preventDefault();};
@@ -275,6 +280,7 @@ export default {
       // 显示遮罩层
       this.productShow=true;
     },
+    // 隐藏遮罩层
     cartHidden(){
       /***取消滑动限制***/
       var mo=function(e){e.preventDefault();};
@@ -283,21 +289,31 @@ export default {
       // 隐藏遮罩层
       this.productShow=false;
     },
+    // 前往首页
+    goHome(){
+      this.$router.push({path:"/"})
+    },
+    // 前往购物车
+    goCart(){
+      this.$router.push({path:"shop"})
+    },
+    // 添加商品
     inCart(){
       this.productShow=false;
       this.$toast("添加成功");
-      var details_img=this.listpics.details_img;
+      var img_url=this.listpics.details_img;
       var price=this.listproduct.price;
       var title=this.listproduct.title;
-      var spce=this.itemList[this.active];
-      var count=this.cnum;
+      var pace=this.itemList[this.active];
+      var cnum=this.cnum;
+      var url="incart";
+      var obj={img_url,price,title,pace,cnum}
+      this.axios.get(url,{params:obj})
+      .then(result=>{
+        console.log(result)
+        console.log(obj)
+      })
     },
-      /***取消滑动限制***/
-      move(){
-        var mo=function(e){e.preventDefault();};
-        document.body.style.overflow='';//出现滚动条
-        document.removeEventListener("touchmove",mo,false);
-      }
   },
   created(){
     this.loadMore()

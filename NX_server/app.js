@@ -186,7 +186,7 @@ server.get("/cart",(req,res)=>{
     return;
   };
   //sql
-  var sql = "select id,img_url,title,price,count from nx_cart where uid=?";
+  var sql = "select id,img_url,title,price,cnum,pace from nx_cart where uid=?";
   pool.query(sql,[uid],(err,result)=>{
     if (err) throw err;
     res.send({
@@ -230,15 +230,12 @@ server.get("/incart",(req,res)=>{
   //获取session中的参数
   var uid=req.session.uid;
   //获取参数
-  var img_url=req.query.img_url;
-  var price=req.query.price;
-  var title=req.query.title;
-  var pace=req.query.pace;
-  var count=req.query.count;
-  var obj={img_url,price,title,pace,count,uid};
+  var obj=req.query;
+  obj.uid=uid;
   //sql
   var sql = "insert into nx_cart set ?";
   pool.query(sql,[obj],(err,result)=>{
+    console.log(result)
     if (err) throw err;
     if (result.affectedRows < 0) {
       res.send({

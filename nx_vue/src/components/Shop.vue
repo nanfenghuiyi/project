@@ -27,11 +27,11 @@
                 元
               </div>
               <div class="details-num">
-                <div @click="countnum(-1)">
+                <div @click="rem(i)">
                   <img src="../assets/details/减.png" alt="">
                 </div>
                 <div class="cnum" v-text="item.cnum"></div>
-                <div @click="countnum(1)">
+                <div @click="add(i)">
                   <img src="../assets/details/加.png" alt="">
                 </div>
               </div>
@@ -39,8 +39,8 @@
           </div>
         </div>
         <!-- 右删除 -->
-        <div class="cart-right" :data-id="item.id"  @click="delItem">
-          <img src="../assets/details/删除.png" alt="">
+        <div class="cart-right">
+          <img :data-id="item.id"  @click="delItem" src="../assets/details/删除.png" alt="">
         </div>
         <!-- <mt-button type="danger" :data-id="item.id" class="btn" @click="delItem">删除</mt-button> -->
       </div>
@@ -60,7 +60,7 @@
           <mt-button class="del-btn" type="danger" @click="delAll">删除</mt-button>
         </div>
         <div>
-          <mt-button class="go-btn">立即购买</mt-button>
+          <mt-button class="go-btn">结算</mt-button>
         </div>
       </div>
     </div>
@@ -76,11 +76,13 @@ export default {
     return{
       list:[],
       Allprice:'',
-      Allnum:''
+      Allnum:'',
+      cnum:''
     }
   },
   methods:{
     mysearch(){console.log("搜索")},
+    //返回上一页面
     myret(){
       console.log("返回上页面")
       if(window.history.length<=1){
@@ -93,16 +95,12 @@ export default {
     loadMore(){
       var url="cart";
       this.axios.get(url).then(result=>{
-        console.log(result);
         var rows=result.data.data;
-        console.log(rows)
+        // console.log(rows)
         // 创建循环为数组中每个对象添加cb属性，控制商品前的复选框
-        this.$store.commit("clearCount")
         for (var item of rows) {
           //添加cb属性
           item.cb=false;
-          //更新购物车数量
-          // this.$store.commit("increment");
         };
         //保存数据
         this.list=rows;
@@ -117,13 +115,46 @@ export default {
         }
         this.Allprice=money.toFixed(2)
         this.Allnum=num
-        console.log(this.Allnum)
       })
       .catch(err=>{
         console.log(err);
         this.$messagebox("请登录后查看");
         this.$router.push({path:'login'})
       })
+    },
+    //总数量，总价格
+    hh(){
+      //保存数据
+      var rows=this.list
+        //计算总价
+        var money=0;
+        var num=0;
+        for (var i = 0; i < rows.length; i++) {
+          if(rows[i]){
+            money+=rows[i].cnum*rows[i].price
+            num+=rows[i].cnum
+          }
+        }
+        this.Allprice=money.toFixed(2)
+        this.Allnum=num
+    },
+    //商品数量的加减
+    add(i){
+      var list=this.list;
+      var cnum=list[i].cnum
+      cnum+=1
+      list[i].cnum=cnum
+      this.hh()
+    },
+    rem(i){
+      var list=this.list;
+      var cnum=list[i].cnum
+      cnum-=1
+      if(cnum<1){
+        cnum=1
+      }
+      list[i].cnum=cnum
+      this.hh()
     },
     //删除多个商品
     delAll(){
@@ -153,7 +184,6 @@ export default {
     //确认删除
     delItem(e){
       //获取当前商品id
-      console.log(e.target.dataset)
       var id=e.target.dataset.id;
       console.log(id)
       //提示交互框

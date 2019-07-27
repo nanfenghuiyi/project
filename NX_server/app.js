@@ -214,7 +214,7 @@ server.get("/delItem",(req,res)=>{
 server.get("/delAll",(req,res)=>{
   //参数
   var ids=req.query.ids;
-  var sql = `delete from nx_cart there id in (${ids})`;
+  var sql = `delete from nx_cart where id in (${ids})`;
   pool.query(sql,(err,result)=>{
     if(err) throw err;
     if(result.affectedRows>0){

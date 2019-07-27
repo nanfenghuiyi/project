@@ -1,13 +1,22 @@
 <template>
   <div class="user-container">
     <!-- 顶部登录 -->
-    <div class="user-top">
+    <div class="user-top" v-show="inLogin">
       <div class="use-img">
         <img src="../assets/user/登录.png" alt="">
       </div>
       <div class="user-login">
-        <router-link :to="{path:'login'}" class="login" href="javascript:;">登录</router-link>
-        <router-link :to="{path:'reg'}" href="javascript:;">注册</router-link>
+        <router-link :to="{path:'login'}" class="login">登录</router-link>
+        <router-link :to="{path:'reg'}" class="reg">注册</router-link>
+      </div>
+    </div>
+    <!-- 顶部退出登录 -->
+    <div class="user-top" v-show="outLogin">
+      <div class="use-img">
+        <img src="../assets/user/登录.png" alt="">
+      </div>
+      <div class="user-login">
+        <div  @click="out" class="outLogin">退出登录</div>
       </div>
     </div>
     <!-- 订单信息 -->
@@ -82,9 +91,33 @@
 
 <script>
 export default {
+  inject:['reload'],
   data(){
-    return {}
+    return {
+      inLogin:true,
+      outLogin:false
+    }
+  },
+  methods:{
+    loadMore(){
+      if(this.$store.state.isLogin){
+        this.outLogin=true;
+        this.inLogin=false;
+      }
+      console.log(this.$store.state.isLogin)
+    },
+    out(){
+      console.log(123)
+      var storage = window.localStorage;
+      storage.clear()
+      this.$store.state.isLogin=false;
+      //重新加载
+      this.reload()
+    }
   }
+  ,created(){
+    this.loadMore()
+  },
 }
 </script>
 
@@ -120,14 +153,14 @@ a{
   width: 30px;
   height: 30px;
 }
-.user-login a{
+.login,.reg{
   border: 1px solid #d6ae7b;
   border-radius: 8px;
   width: 55px;
+  height: 35px;
+  line-height: 35px;
   margin: 0 5px;
   color: #fff;
-  text-decoration: none;
-  display: block;
 }
 .login{
   background: #d6ae7b;
@@ -136,6 +169,15 @@ a{
   margin-left: 10px;
   display: flex;
   justify-content: left;
+}
+.outLogin{
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #d6ae7b;
+  border-radius: 8px;
+  background: #f50;
+  color: #fff;
 }
 /* 订单信息 */
 .order-my{

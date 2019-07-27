@@ -29,6 +29,7 @@
 import titlebar from "../components/coms/TitleBar";
 
 export default {
+  inject:['reload'],
   data () {
     return {
       phone:"",
@@ -73,10 +74,11 @@ export default {
           localStorage.setItem("Flag", "isLogin");
           //登录状态提示
           this.$toast(result.data.msg);
-          this.$router.push("/");
+          this.$router.go(-1)
         }else{
           this.$messagebox("提示","手机号码或者密码有误")
-          this.$router.go(0)
+          //重新加载
+          this.reload()
         }
       })
     }

@@ -19,6 +19,8 @@ export default new Vuex.Store({
     userStatus(state,flag){
       state.isLogin=flag
     }
+    //清除登录状态
+    
   },
   //应用mutations
   actions: {

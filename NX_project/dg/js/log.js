@@ -50,8 +50,10 @@ $(function () {
     if (checkTel("#tel","#telInfo")&&checkpass("#pass","#passInfo")){
       var phone =$.trim($("#tel").val());
       var upwd =$.trim($("#pass").val());
+      console.log(phone)
+      console.log(upwd)
       $.ajax({
-        type: "get",
+        type: "post",
         url: "http://localhost:3000/login",
         data: {
           phone:phone, upwd:upwd

@@ -6,15 +6,15 @@
     <div class="cont-item">
       <router-link :to="{path:'product_details'}" class="itemimg">
         <img src="../assets/product/product01.jpg" alt="">
-        <h3 class="itemdiv">暖心蛋糕</h3>
+        <h3 class="itemh">暖心蛋糕</h3>
       </router-link>
       <router-link :to="{path:'product_details'}" class="itemimg">
         <img src="../assets/product/product01.jpg" alt="">
-        <h3 class="itemdiv itemtop1">暖心蛋糕</h3>
+        <h3 class="itemh itemtop1">暖心蛋糕</h3>
       </router-link>
       <router-link :to="{path:'product_details'}" class="itemimg">
         <img src="../assets/product/product01.jpg" alt="">
-        <h3 class="itemdiv itemtop2">暖心蛋糕</h3>
+        <h3 class="itemh itemtop2">暖心蛋糕</h3>
       </router-link>
     </div>
   </div>
@@ -29,9 +29,11 @@ export default {
     return{}
   },
   methods:{
-    mysearch(){console.log("搜索")},
+    mysearch(){
+      console.log("搜索")
+      },
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;
@@ -53,13 +55,19 @@ export default {
   .cont-item{
     text-align: center;
     margin-top: 50px;
+    /* position: relative; */
+  }
+  .itemimg{
+    /* position: absolute; */
+    width: 90%;
+    height: 250px;
   }
   .itemimg img{
     margin-top: 15px;
     width: 90%;
     height: 250px;
   }
-  .itemdiv{
+  .itemh{
     width: 200px;
     height: 40px;
     line-height: 40px;
@@ -68,14 +76,14 @@ export default {
     border: 1px solid red;
     border-radius: 10px;
     position: absolute;
-    top: 18%;
+    top: 150px;
     left: 50%;
     transform: translateX(-100px)
   }
   .itemtop1{
-    top:51%;
+    top:420px;
   }
   .itemtop2{
-    top:84%;
+    top:690px;
   }
 </style>

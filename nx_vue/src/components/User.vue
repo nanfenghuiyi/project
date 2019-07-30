@@ -104,18 +104,18 @@ export default {
         this.outLogin=true;
         this.inLogin=false;
       }
-      console.log(this.$store.state.isLogin)
+      // console.log(this.$store.state.isLogin)
     },
     out(){
-      console.log(123)
+      // console.log(123)
       var storage = window.localStorage;
       storage.clear()
       this.$store.state.isLogin=false;
       //重新加载
       this.reload()
     }
-  }
-  ,created(){
+  },
+  created(){
     this.loadMore()
   },
 }

@@ -35,7 +35,7 @@ export default {
   methods:{
     mysearch(){console.log("搜索")},
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;
@@ -50,10 +50,10 @@ export default {
       this.axios.get(url,{params:obj})
       .then(result=>{
         this.num=result.data.pc;
-        console.log(result)
+        // console.log(result)
         var rows=this.list.concat(result.data.data)
         this.list=rows;
-        console.log(this.num);
+        // console.log(this.num);
       })
     },
     onScroll(){

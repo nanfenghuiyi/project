@@ -3,6 +3,8 @@ const express = require("express");
 const mysql=require("mysql");
 const cors=require("cors");
 const session = require("express-session");
+//引入body-parser
+const bodyParser = require('body-parser');
 // 2：配置第三方模块
   // 2.1：配置连接池
   var pool=mysql.createPool({
@@ -30,6 +32,11 @@ const session = require("express-session");
     resave:true,
     saveUninitialized:true
   }))
+  //使用body-parser中间件，将post请求的数据格式化为对象
+  server.use(bodyParser.json())
+  server.use(bodyParser.urlencoded({
+    extended: false
+  }));
   // 2.4：指定静态目录
   server.use(express.static('public'));
   
@@ -92,9 +99,9 @@ server.get("/details",(req,res)=>{
 });
 
 //注册数据
-server.get("/reg",(req,res)=>{
-  var $phone=req.query.phone;
-  var $upwd=req.query.upwd;
+server.post("/reg",(req,res)=>{
+  var $phone=req.body.phone;
+  var $upwd=req.body.upwd;
   if(!$phone){
     res.send("电话不能为空");
     return;
@@ -119,10 +126,10 @@ server.get("/reg",(req,res)=>{
 // server.get
 
 //用户登录
-server.get("/login",(req,res)=>{
+server.post("/login",(req,res)=>{
   // var $uname=req.query.uname;
-  var $phone=req.query.phone;
-  var $upwd=req.query.upwd;
+  var $phone=req.body.phone;
+  var $upwd=req.body.upwd;
   //验证
   /* if (!$phone) {
     res.send("手机号不能为空");
@@ -247,6 +254,20 @@ server.get("/incart",(req,res)=>{
         code: 1,
         msg: "添加成功"
       })
+    }
+  })
+})
+
+//查询用户
+server.get('/selphone',(req,res)=>{
+  var phone=req.query.phone;
+  var sql = 'select * from nx_user where phone=?';
+  pool.query(sql,[phone],(err,result)=>{
+    if(err) throw err;
+    if(result.length>0){
+      res.send({code:1,msg:'已注册'})
+    }else {
+      res.send({code:0,msg:'未注册'})
     }
   })
 })

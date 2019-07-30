@@ -84,7 +84,7 @@ export default {
     mysearch(){console.log("搜索")},
     //返回上一页面
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;
@@ -185,7 +185,7 @@ export default {
     delItem(e){
       //获取当前商品id
       var id=e.target.dataset.id;
-      console.log(id)
+      // console.log(id)
       //提示交互框
       this.$messagebox.confirm("是否删除指定数据")
       .then(result=>{

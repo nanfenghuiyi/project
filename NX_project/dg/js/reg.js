@@ -89,8 +89,10 @@ $(function () {
         if (checkTel("#tel", "#telInfo") && checkpass("#pass", "#passInfo") && checkPassword("#pass", "#password", "#passwordInfo") && $("#btncheck").is(":checked")) {
           var u_phone = $("#tel").val();
           var u_pwd = $("#pass").val();
+          console.log(u_phone)
+          console.log(u_pwd)
           $.ajax({
-            type: "get",
+            type: "post",
             url: "http://localhost:3000/reg",
             data: {
               phone: u_phone,

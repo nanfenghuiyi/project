@@ -3,6 +3,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import 'lib-flexible'
 //1：完整引入mint-ui
 import MintUI from 'mint-ui';
 //2：单引mint-ui样式

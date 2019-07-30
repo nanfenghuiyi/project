@@ -39,7 +39,7 @@ export default {
   methods:{
     mysearch(){console.log("搜索")},
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;
@@ -65,7 +65,7 @@ export default {
       //发送ajax请求
       var url="login";
       var obj={phone,upwd};
-      this.axios.get(url,{params:obj})
+      this.axios.post(url,obj)
       .then(result=>{
         if(result.data.code>0){
           //设置Vuex登录标志为true，默认userLogin为false

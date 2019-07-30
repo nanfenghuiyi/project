@@ -46,7 +46,7 @@ export default {
       active:"recommend",
       currentIndex:[
         {isSelected:false},
-        {isSelected:false},
+        {isSelected:false}, 
         {isSelected:true},
         {isSelected:false},
         {isSelected:false},

@@ -8,13 +8,13 @@
     <div class="reg-container">
       <div class="reg-input">
         账号
-        <input type="text" placeholder="手机号" v-model="phone">
+        <input type="text" placeholder="手机号" v-model="phone" @blur="checkphone()">
       </div>
       <div class="reg-input">
         密码
         <input type="password" placeholder="密码" v-model="upwd">
       </div>
-      <mt-button class="btn-reg" @click="reg()">立即注册</mt-button>
+      <mt-button class="btn-reg" @click="reg()" v-bind:disabled="isabled">立即注册</mt-button>
     </div>
   </div>
 </template>
@@ -23,22 +23,39 @@
 import titlebar from "../components/coms/TitleBar";
 
 export default {
+  inject:['reload'],
   data () {
     return {
       phone:"",
-      upwd:""
+      upwd:"",
+      isCheck:false,
+      isabled:true
     }
   },
   methods:{
     mysearch(){console.log("搜索")},
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;
       }else {
         this.$router.go(-1)
       }
+    },
+    checkphone(){
+      var phone=this.phone;
+      var url='selphone'
+      this.axios.get('selphone?phone='+phone)
+      .then(result=>{
+        if(result.data.code>0){
+          this.$toast("账号已注册")
+          this.isCheck=false
+        }else{
+          this.isCheck=true
+          this.isabled=false
+        }
+      })
     },
     reg(){
       var phone=this.phone;
@@ -57,18 +74,19 @@ export default {
       //发送ajax请求
       var url="reg";
       var obj={phone,upwd};
-      this.axios.get(url,{params:obj})
+      this.axios.post(url,obj)
       .then(result=>{
-        console.log(result)
+        // console.log(result)
         if(result.data.code > 0){
           this.$toast(result.data.msg);
           this.$router.push("login");
         }else{
           this.$messagebox("提示","账号已存在");
-          this.$router.go(0);
+          //重新加载
+          this.reload()
         }
       })
-    }
+    },
   },
   components:{
     titlebar

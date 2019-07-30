@@ -16,7 +16,7 @@ export default {
   methods:{
     mysearch(){console.log("搜索")},
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;

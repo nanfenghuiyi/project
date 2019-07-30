@@ -227,7 +227,7 @@ export default {
     mysearch(){console.log("搜索")},
     // 返回
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;
@@ -241,7 +241,7 @@ export default {
         var lid=this.$route.query.lid;
         this.axios.get("details?lid="+lid)
         .then(result=>{
-          console.log(result)
+          // console.log(result)
           this.listpics=result.data.pics[lid];
           this.listcarousels=result.data.carousels;
           this.listproduct=result.data.product;
@@ -300,7 +300,6 @@ export default {
     // 添加商品
     inCart(){
       this.productShow=false;
-      this.$toast("添加成功");
       var img_url=this.listpics.details_img;
       var price=this.listproduct.price;
       var title=this.listproduct.title;
@@ -310,8 +309,9 @@ export default {
       var obj={img_url,price,title,pace,cnum}
       this.axios.get(url,{params:obj})
       .then(result=>{
-        console.log(result)
-        console.log(obj)
+        this.$toast("添加成功");
+        // console.log(result)
+        // console.log(obj)
       })
     },
   },

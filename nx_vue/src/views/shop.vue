@@ -14,16 +14,12 @@
           <tabbaricon :focused="currentIndex[1].isSelected" :selectedImage="require('../assets/nx_detail_normal.png')" :normalImage="require('../assets/nx_detail_selected.png')"></tabbaricon>
           分类
         </mt-tab-item>
-        <mt-tab-item id="recommend" @click.native="changeState(2);btn('recommend')">
-          <tabbaricon :focused="currentIndex[2].isSelected" :selectedImage="require('../assets/nx_recommend_normal.png')" :normalImage="require('../assets/nx_recommend_selected.png')"></tabbaricon>
-          推荐
-        </mt-tab-item>
-        <mt-tab-item id="shop" @click.native="changeState(3);btn('shop')">
-          <tabbaricon :focused="currentIndex[3].isSelected" :selectedImage="require('../assets/nx_shop_normal.png')" :normalImage="require('../assets/nx_shop_selected.png')"></tabbaricon>
+        <mt-tab-item id="shop" @click.native="changeState(2);btn('shop')">
+          <tabbaricon :focused="currentIndex[2].isSelected" :selectedImage="require('../assets/nx_shop_normal.png')" :normalImage="require('../assets/nx_shop_selected.png')"></tabbaricon>
           购物车
         </mt-tab-item>
-        <mt-tab-item id="user" @click.native="changeState(4);btn('user')">
-          <tabbaricon :focused="currentIndex[4].isSelected" :selectedImage="require('../assets/nx_me_normal.png')" :normalImage="require('../assets/nx_me_selected.png')"></tabbaricon>
+        <mt-tab-item id="user" @click.native="changeState(3);btn('user')">
+          <tabbaricon :focused="currentIndex[3].isSelected" :selectedImage="require('../assets/nx_me_normal.png')" :normalImage="require('../assets/nx_me_selected.png')"></tabbaricon>
           我的
         </mt-tab-item>
       </mt-tabbar>

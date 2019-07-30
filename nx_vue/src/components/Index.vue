@@ -93,7 +93,7 @@ export default {
   methods:{
     mysearch(){console.log("搜索")},
     myret(){
-      console.log("返回上页面")
+      // console.log("返回上页面")
       if(window.history.length<=1){
         this.$router.push({path:'/'});
         return false;
@@ -108,7 +108,7 @@ export default {
     .then(result=>{
       this.listImg=result.data.img;
       var list=result.data.data;
-      console.log(list)
+      // console.log(list)
       for (var i = 0; i < 8; i++) {
         this.listPro.push(list[i])
       }
@@ -139,6 +139,7 @@ export default {
   }
   /* 导航 */
   .tab{
+    text-align: center;
     margin-top: 20px;
     border-bottom: 2px solid #ddd;
     display: flex;

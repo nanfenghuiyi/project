@@ -28,11 +28,11 @@
               </div>
               <div class="details-num">
                 <div @click="rem(i)">
-                  <img src="../assets/details/减.png" alt="">
+                  <img src="../assets/details/out.png" alt="">
                 </div>
                 <div class="cnum" v-text="item.cnum"></div>
                 <div @click="add(i)">
-                  <img src="../assets/details/加.png" alt="">
+                  <img src="../assets/details/add.png" alt="">
                 </div>
               </div>
             </div>
@@ -40,7 +40,7 @@
         </div>
         <!-- 右删除 -->
         <div class="cart-right">
-          <img :data-id="item.id"  @click="delItem" src="../assets/details/删除.png" alt="">
+          <img :data-id="item.id"  @click="delItem" src="../assets/details/del.png" alt="">
         </div>
         <!-- <mt-button type="danger" :data-id="item.id" class="btn" @click="delItem">删除</mt-button> -->
       </div>

@@ -19,11 +19,11 @@
         <div id="price" class="section-color price" v-text="'¥'+listproduct.price"></div>
         <div class="section-color">
           甜度：
-          <img src="../assets/details/爱心.png" alt="">
-          <img src="../assets/details/爱心.png" alt="">
-          <img src="../assets/details/爱心 (1).png" alt="">
-          <img src="../assets/details/爱心 (1).png" alt="">
-          <img src="../assets/details/爱心 (1).png" alt="">
+          <img src="../assets/details/xin.png" alt="">
+          <img src="../assets/details/xin.png" alt="">
+          <img src="../assets/details/xin (1).png" alt="">
+          <img src="../assets/details/xin (1).png" alt="">
+          <img src="../assets/details/xin (1).png" alt="">
         </div>
       </div>
       <div>
@@ -126,7 +126,7 @@
       <div class="product-details">
         <div class="product-top">
           <div @click="cartHidden" class="details-none">
-            <img src="../assets/details/叉号.png" alt="">
+            <img src="../assets/details/x.png" alt="">
           </div>
           <div class="details-top">
             <div class="details-img">
@@ -149,11 +149,11 @@
             <div>购买数量：</div> 
             <div class="details-num">
               <div @click="countnum(-1)">
-                <img src="../assets/details/减.png" alt="">
+                <img src="../assets/details/out.png" alt="">
               </div>
               <input v-model="cnum" type="number" >
               <div @click="countnum(1)">
-                <img src="../assets/details/加.png" alt="">
+                <img src="../assets/details/add.png" alt="">
               </div>
             </div>
           </div>

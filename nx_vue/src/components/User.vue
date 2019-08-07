@@ -3,7 +3,7 @@
     <!-- 顶部登录 -->
     <div class="user-top" v-show="inLogin">
       <div class="use-img">
-        <img src="../assets/user/登录.png" alt="">
+        <img src="../assets/user/login.png" alt="">
       </div>
       <div class="user-login">
         <router-link :to="{path:'login'}" class="login">登录</router-link>
@@ -13,7 +13,7 @@
     <!-- 顶部退出登录 -->
     <div class="user-top" v-show="outLogin">
       <div class="use-img">
-        <img src="../assets/user/登录.png" alt="">
+        <img src="../assets/user/login.png" alt="">
       </div>
       <div class="user-login">
         <div  @click="out" class="outLogin">退出登录</div>
@@ -34,7 +34,7 @@
           待付款
         </div>
         <div class="orderImgc">
-          <img src="../assets/user/待发货.png" alt="">
+          <img src="../assets/user/dai.png" alt="">
           待发货
         </div>
         <div class="orderImgr">

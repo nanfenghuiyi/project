@@ -64,7 +64,7 @@ export default {
       };
       //发送ajax请求
       var url="login";
-      var obj={phone,upwd};
+      var obj={phone,upwd}; 
       this.axios.post(url,obj)
       .then(result=>{
         if(result.data.code>0){

@@ -30,16 +30,28 @@ a{
     .aside_display{
         display: none;
     }
+    /*导航栏*/
     .nav_list>ul>li{
         padding: 0 !important;
     }
-    .my_li_w{
+    .nav_list .a-div+.my_li_w {
         left: -18px !important;
-        top: 20px !important;
+        top: 16px !important;
     }
+    /*头部定位*/
     .nav_none>div:first-child,.my_pos{
-        display: none
+        display: none !important
     }
+    /*头部隐藏导航*/
+    header .nav_none.d-none{
+        display: none !important
+    }
+    /*首页评论*/
+    .row.text-center .d-sm-none.my_small:nth-child(2),
+    .row.text-center .d-sm-none.my_small:last-child {
+        display: none !important
+    }
+
     .p_two::before{
         left: 0 !important;
         top: 63px !important;

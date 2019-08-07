@@ -63,7 +63,7 @@ export default {
       var outerHeight=document.documentElement.clientHeight;
       //可滚动容器超出当前窗口显示范围的高度
       var scrollTop=document.documentElement.scrollTop
-      //srcollTop在也难滚动时为0，开始滚动狗，慢慢增加，滚动到页面底部时，出现innerHeight < (outerHeight + scrollTop)的情况，严格来讲，是接近底部。
+      //srcollTop在也难滚动时为0，开始滚动，慢慢增加，滚动到页面底部时，出现innerHeight < (outerHeight + scrollTop)的情况，严格来讲，是接近底部。
       if(this.list.length<this.num){
         if(innerHeight<(outerHeight+scrollTop)){
           //加载跟多操作

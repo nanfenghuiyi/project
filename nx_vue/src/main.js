@@ -26,6 +26,9 @@ Vue.use(iView)
 //注册vuex组件 
 Vue.use(Vuex)
 
+//引入物理返回键操作
+import exit from "./exit"; //监听返回
+
 //8：创建store
 
 //验证登录
